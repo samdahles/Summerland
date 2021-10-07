@@ -1,0 +1,16 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>dev.samdahles</groupId>
+	<artifactId>Summerland</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>The Summerland</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.github.han-yaeger</groupId>
+			<artifactId>yaeger</artifactId>
+			<version>2021.2022.1</version>
+		</dependency>
+	</dependencies>
+</project>
