@@ -4,16 +4,6 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 
 import dev.samdahles.summerland.scenes.MainMenuScene;
-import nl.han.showcase.scenes.composing.Composing;
-import nl.han.showcase.scenes.distance.TheDistanceScene;
-import nl.han.showcase.scenes.gravity.Gravity;
-import nl.han.showcase.scenes.greatballsoffire.GreatBallsOfFire;
-import nl.han.showcase.scenes.mapsandlegends.MapsAndLegends;
-import nl.han.showcase.scenes.ridethelightning.RideTheLightningScene;
-import nl.han.showcase.scenes.roadsgoeveron.RoadsGoEverOnScene;
-import nl.han.showcase.scenes.selection.SelectionScene;
-import nl.han.showcase.scenes.shapeofyou.ShapeOfYouScene;
-import nl.han.showcase.scenes.time.Time;
 
 public class Core extends YaegerGame {
 	public static void main(String[] args) {
