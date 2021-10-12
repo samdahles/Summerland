@@ -3,13 +3,16 @@ package dev.samdahles.summerland;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 import com.github.hanyaeger.api.entities.impl.CustomFont;
-import com.github.hanyaeger.tutorial.scenes.MainMenuScene;
+
+import dev.samdahles.summerland.scenes.menus.CreditsScene;
+import dev.samdahles.summerland.scenes.menus.MainMenuScene;
+import dev.samdahles.summerland.scenes.menus.SettingsScene;
 
 public class Core extends YaegerGame {
-	public final int SCENE_MAINMENU = 0;
-	public final int SCENE_GAME     = 1;
-	public final int SCENE_SETTINGS = 2;
-	public final int SCENE_CREDITS  = 3;
+	public static final int SCENE_MAINMENU = 0;
+	public static final int SCENE_GAME = 1;
+	public static final int SCENE_SETTINGS = 2;
+	public static final int SCENE_CREDITS = 3;
 
     public static void main(String[] args) {
         launch(args);
@@ -25,12 +28,12 @@ public class Core extends YaegerGame {
     public void setupScenes() {
         addScene(SCENE_MAINMENU, new MainMenuScene(this));
 //      addScene(SCENE_GAME, new GameScene(this));
-//      addScene(SCENE_SETTINGS, new SettingsScene(this));
-//      addScene(SCENE_CREDITS, new CreditsScene(this));
+        addScene(SCENE_SETTINGS, new SettingsScene(this));
+        addScene(SCENE_CREDITS, new CreditsScene(this));
     }
     
 	@SuppressWarnings("exports")
 	public static CustomFont getFont(int size) {
-		return new CustomFont("fonts/PressStart2P.ttf", size);
+		return new CustomFont("Fonts/PressStart2P.ttf", size);
 	}
 }
