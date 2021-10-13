@@ -1,9 +1,9 @@
-package dev.samdahles.summerland.entities.buttons.mainmenu;
+package dev.samdahles.summerland.entities.ui.buttons.menus.main;
 
 import com.github.hanyaeger.api.Coordinate2D;
 
 import dev.samdahles.summerland.Core;
-import dev.samdahles.summerland.entities.buttons.Button;
+import dev.samdahles.summerland.entities.ui.buttons.Button;
 import javafx.scene.input.MouseButton;
 
 public class SettingsButton extends Button {

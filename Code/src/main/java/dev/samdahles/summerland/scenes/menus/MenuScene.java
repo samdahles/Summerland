@@ -3,10 +3,10 @@ package dev.samdahles.summerland.scenes.menus;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import dev.samdahles.summerland.entities.Text;
 
 import dev.samdahles.summerland.Core;
-import dev.samdahles.summerland.entities.buttons.BackButton;
+import dev.samdahles.summerland.entities.ui.Text;
+import dev.samdahles.summerland.entities.ui.buttons.menus.BackButton;
 
 public abstract class MenuScene extends DynamicScene {
     protected Core core;

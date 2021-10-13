@@ -1,4 +1,4 @@
-package dev.samdahles.summerland.entities.buttons;
+package dev.samdahles.summerland.entities.ui.buttons;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;

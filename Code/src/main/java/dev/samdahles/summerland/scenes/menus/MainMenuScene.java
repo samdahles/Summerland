@@ -3,11 +3,11 @@ package dev.samdahles.summerland.scenes.menus;
 import com.github.hanyaeger.api.Coordinate2D;
 
 import dev.samdahles.summerland.Core;
-import dev.samdahles.summerland.entities.buttons.mainmenu.ContinueButton;
-import dev.samdahles.summerland.entities.buttons.mainmenu.CreditsButton;
-import dev.samdahles.summerland.entities.buttons.mainmenu.NewGameButton;
-import dev.samdahles.summerland.entities.buttons.mainmenu.QuitButton;
-import dev.samdahles.summerland.entities.buttons.mainmenu.SettingsButton;
+import dev.samdahles.summerland.entities.ui.buttons.menus.main.ContinueButton;
+import dev.samdahles.summerland.entities.ui.buttons.menus.main.CreditsButton;
+import dev.samdahles.summerland.entities.ui.buttons.menus.main.NewGameButton;
+import dev.samdahles.summerland.entities.ui.buttons.menus.main.QuitButton;
+import dev.samdahles.summerland.entities.ui.buttons.menus.main.SettingsButton;
 
 public class MainMenuScene extends MenuScene {
     public MainMenuScene(Core core) {

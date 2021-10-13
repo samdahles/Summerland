@@ -2,9 +2,9 @@ package dev.samdahles.summerland.scenes.menus;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
-import dev.samdahles.summerland.entities.Text;
 
 import dev.samdahles.summerland.Core;
+import dev.samdahles.summerland.entities.ui.Text;
 
 public class CreditsScene extends MenuScene {
     public CreditsScene(Core core) {

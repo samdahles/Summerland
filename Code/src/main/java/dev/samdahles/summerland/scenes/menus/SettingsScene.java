@@ -3,8 +3,8 @@ package dev.samdahles.summerland.scenes.menus;
 import com.github.hanyaeger.api.Coordinate2D;
 
 import dev.samdahles.summerland.Core;
-import dev.samdahles.summerland.entities.buttons.Button;
-import dev.samdahles.summerland.entities.buttons.settings.FullscreenButton;
+import dev.samdahles.summerland.entities.ui.buttons.Button;
+import dev.samdahles.summerland.entities.ui.buttons.menus.settings.FullscreenButton;
 
 public class SettingsScene extends MenuScene {
     public SettingsScene(Core core) {

@@ -1,10 +1,10 @@
-package dev.samdahles.summerland.entities.buttons.settings;
+package dev.samdahles.summerland.entities.ui.buttons.menus.settings;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 
 import dev.samdahles.summerland.Core;
-import dev.samdahles.summerland.entities.buttons.Button;
+import dev.samdahles.summerland.entities.ui.buttons.Button;
 import javafx.scene.input.MouseButton;
 
 public class FullscreenButton extends Button {

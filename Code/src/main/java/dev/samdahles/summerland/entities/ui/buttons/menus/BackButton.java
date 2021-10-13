@@ -1,8 +1,9 @@
-package dev.samdahles.summerland.entities.buttons;
+package dev.samdahles.summerland.entities.ui.buttons.menus;
 
 import com.github.hanyaeger.api.Coordinate2D;
 
 import dev.samdahles.summerland.Core;
+import dev.samdahles.summerland.entities.ui.buttons.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 
