@@ -8,7 +8,7 @@ import javafx.scene.input.MouseButton;
 
 public class CreditsButton extends Button {
     public CreditsButton(Core core, Coordinate2D initialPosition, int size) {
-        super(core, initialPosition, size, "Credits");
+        super(core, initialPosition, size, "Credits", "Roboto");
     }
 
 	@Override

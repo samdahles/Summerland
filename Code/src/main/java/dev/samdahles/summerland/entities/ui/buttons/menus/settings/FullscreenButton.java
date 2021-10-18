@@ -9,7 +9,7 @@ import javafx.scene.input.MouseButton;
 
 public class FullscreenButton extends Button {
     public FullscreenButton(Core core, Coordinate2D initialPosition, int size) {
-        super(core, initialPosition, size, "Fullscreen OFF", AnchorPoint.TOP_RIGHT);
+        super(core, initialPosition, size, "Fullscreen OFF", AnchorPoint.TOP_RIGHT, "PressStart2P");
     }
 
 	@Override

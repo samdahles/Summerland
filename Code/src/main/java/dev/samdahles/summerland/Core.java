@@ -32,8 +32,10 @@ public class Core extends YaegerGame {
         addScene(SCENE_CREDITS, new CreditsScene(this));
     }
     
+    
+    
 	@SuppressWarnings("exports")
-	public static CustomFont getFont(int size) {
-		return new CustomFont("Fonts/PressStart2P.ttf", size);
+	public static CustomFont getFont(String font, int size) {
+		return new CustomFont("Fonts/" + font + ".ttf", size);
 	}
 }

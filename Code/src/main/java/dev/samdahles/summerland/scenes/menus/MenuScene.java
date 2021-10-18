@@ -31,7 +31,7 @@ public abstract class MenuScene extends DynamicScene {
     	int titleYMain = 140;
     	int titleSize = 60;
     	
-        Text titleText = new Text(new Coordinate2D(getWidth() / 2, this.main ? titleYMain : titleY), titleSize, this.title, AnchorPoint.TOP_CENTER);
+        Text titleText = new Text(new Coordinate2D(getWidth() / 2, this.main ? titleYMain : titleY), titleSize, this.title, AnchorPoint.TOP_CENTER, "PressStart2P");
         this.addEntity(titleText);
         
         if (!main) {

@@ -16,18 +16,18 @@ public class MainMenuScene extends MenuScene {
 
     public void setupMenuEntities() {
         int buttonSize = 30;
-        int buttonX = 10;
+        int buttonX = 40;
         int buttonYMargin = 20;
         double buttonYOffset = (getHeight() / 2) - 20;
         
         ContinueButton continueButton = new ContinueButton(this.core, new Coordinate2D(buttonX, buttonYOffset), buttonSize);
-        NewGameButton newGameButton   = new NewGameButton (this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 1 + buttonSize * 1), buttonSize);
-        SettingsButton settingsButton = new SettingsButton(this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 2 + buttonSize * 2), buttonSize);
-        CreditsButton creditsButton   = new CreditsButton (this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 3 + buttonSize * 3), buttonSize);
-        QuitButton quitButton         = new QuitButton    (this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 4 + buttonSize * 4), buttonSize);
+        // NewGameButton newGameButton   = new NewGameButton (this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 1 + buttonSize * 1), buttonSize);
+        SettingsButton settingsButton = new SettingsButton(this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 1 + buttonSize * 1), buttonSize);
+        CreditsButton creditsButton   = new CreditsButton (this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 2 + buttonSize * 2), buttonSize);
+        QuitButton quitButton         = new QuitButton    (this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 3 + buttonSize * 3), buttonSize);
         
         this.addEntity(continueButton);
-        this.addEntity(newGameButton);
+        // this.addEntity(newGameButton);
         this.addEntity(settingsButton);
         this.addEntity(creditsButton);
         this.addEntity(quitButton);

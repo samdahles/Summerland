@@ -17,12 +17,12 @@ public class CreditsScene extends MenuScene {
     	
     	double width = this.getWidth() / 2;
     	
-    	Text programming = new Text(new Coordinate2D(width, textYOffset), 30, "Programming", AnchorPoint.TOP_CENTER);
-    	Text sam    = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 1), 25, "Sam", AnchorPoint.TOP_CENTER);
-    	Text dylan  = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 2), 25, "Dylan", AnchorPoint.TOP_CENTER);
-    	Text thomas = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 3), 25, "Thomas", AnchorPoint.TOP_CENTER);
+    	Text development = new Text(new Coordinate2D(width, textYOffset), 30, "Development", AnchorPoint.TOP_CENTER, "RobotoBlack");
+    	Text sam    = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 1), 25, "Sam", AnchorPoint.TOP_CENTER, "Roboto");
+    	Text dylan  = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 2), 25, "Dylan", AnchorPoint.TOP_CENTER, "Roboto");
+    	Text thomas = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 3), 25, "Thomas", AnchorPoint.TOP_CENTER, "Roboto");
     	
-    	this.addEntity(programming);
+    	this.addEntity(development);
     	this.addEntity(sam);
     	this.addEntity(dylan);
     	this.addEntity(thomas);

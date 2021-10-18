@@ -8,11 +8,12 @@ import javafx.scene.input.MouseButton;
 
 public class ContinueButton extends Button {
     public ContinueButton(Core core, Coordinate2D initialPosition, int size) {
-        super(core, initialPosition, size, "Continue");
+        super(core, initialPosition, size, "Continue", "Roboto");
     }
 
 	@Override
 	public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2d) {
+		
 		//this.core.setActiveScene(core.SCENE_GAME);
 		System.out.println("Continue");
 	}
