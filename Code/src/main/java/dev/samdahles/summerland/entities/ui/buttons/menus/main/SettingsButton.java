@@ -8,7 +8,7 @@ import javafx.scene.input.MouseButton;
 
 public class SettingsButton extends Button {
     public SettingsButton(Core core, Coordinate2D initialPosition, int size) {
-        super(core, initialPosition, size, "Settings", "Roboto");
+        super(core, initialPosition, size, "Settings", "Roboto", true);
     }
 
 	@Override

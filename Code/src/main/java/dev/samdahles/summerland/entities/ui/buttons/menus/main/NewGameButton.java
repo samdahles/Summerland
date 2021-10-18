@@ -8,7 +8,7 @@ import javafx.scene.input.MouseButton;
 
 public class NewGameButton extends Button {
     public NewGameButton(Core core, Coordinate2D initialPosition, int size) {
-        super(core, initialPosition, size, "New Game", "Roboto");
+        super(core, initialPosition, size, "New Game", "Roboto", true);
     }
 
 	@Override

@@ -8,7 +8,7 @@ import javafx.scene.input.MouseButton;
 
 public class ContinueButton extends Button {
     public ContinueButton(Core core, Coordinate2D initialPosition, int size) {
-        super(core, initialPosition, size, "Continue", "Roboto");
+        super(core, initialPosition, size, "Continue", "Roboto", true);
     }
 
 	@Override

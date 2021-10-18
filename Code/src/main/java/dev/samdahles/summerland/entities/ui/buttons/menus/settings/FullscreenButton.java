@@ -8,12 +8,20 @@ import dev.samdahles.summerland.entities.ui.buttons.Button;
 import javafx.scene.input.MouseButton;
 
 public class FullscreenButton extends Button {
+	private boolean state = false;
     public FullscreenButton(Core core, Coordinate2D initialPosition, int size) {
-        super(core, initialPosition, size, "Fullscreen OFF", AnchorPoint.TOP_RIGHT, "PressStart2P");
+        super(core, initialPosition, size, "Fullscreen OFF", AnchorPoint.TOP_RIGHT, "PressStart2P", false);
     }
 
 	@Override
 	public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2d) {
-		System.out.println("Fullscreen");
+		if(state) {
+			this.setText("Fullscreen OFF");
+			// Turn off fullscreen
+		} else {
+			this.setText("Fullscreen ON");
+			// Turn on fullscreen
+		}
+		state = !state;
 	}
 }

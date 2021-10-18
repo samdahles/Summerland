@@ -8,7 +8,7 @@ import javafx.scene.input.MouseButton;
 
 public class QuitButton extends Button {
     public QuitButton(Core core, Coordinate2D initialPosition, int size) {
-        super(core, initialPosition, size, "Quit", "Roboto");
+        super(core, initialPosition, size, "Quit", "Roboto", true);
     }
 
 	@Override

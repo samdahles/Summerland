@@ -29,13 +29,13 @@ public abstract class MenuScene extends DynamicScene {
     public void setupEntities() {
     	int titleY = 40;
     	int titleYMain = 140;
-    	int titleSize = 60;
+    	int titleSize = 40;
     	
         Text titleText = new Text(new Coordinate2D(getWidth() / 2, this.main ? titleYMain : titleY), titleSize, this.title, AnchorPoint.TOP_CENTER, "PressStart2P");
         this.addEntity(titleText);
         
         if (!main) {
-        	BackButton backButton = new BackButton(new Coordinate2D(titleY, 40), titleSize, Core.SCENE_MAINMENU, this.core);
+        	BackButton backButton = new BackButton(new Coordinate2D(titleY, 40), 20, Core.SCENE_MAINMENU, this.core);
         	this.addEntity(backButton);
         }
         

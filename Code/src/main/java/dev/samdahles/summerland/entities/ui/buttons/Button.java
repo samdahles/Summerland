@@ -20,42 +20,46 @@ public abstract class Button extends DynamicTextEntity implements MouseButtonPre
     private Color color = Color.BLACK;
     private AnchorPoint anchorPoint = AnchorPoint.TOP_LEFT;
     private String font;
-    
-    private ButtonFlasher flasher = new ButtonFlasher(this, 15, 0.025);
+    private boolean doFlash = true;
+    protected ButtonFlasher flasher = new ButtonFlasher(this, 15, 0.025);
 
-	public Button(Core core, Coordinate2D initialPosition, int size, String text, String font) {
+	public Button(Core core, Coordinate2D initialPosition, int size, String text, String font, boolean doFlash) {
         super(initialPosition, text);
         this.core = core;
         this.size = size;
         this.font = font;
+        this.doFlash = doFlash;
         create();
 	}
 	
-	public Button(Core core, Coordinate2D initialPosition, int size, String text, Color color, String font) {
+	public Button(Core core, Coordinate2D initialPosition, int size, String text, Color color, String font, boolean doFlash) {
         super(initialPosition, text);
         this.core = core;
         this.size = size;
         this.color = color;
         this.font = font;
+        this.doFlash = doFlash;
         create();
 	}
 	
-	public Button(Core core, Coordinate2D initialPosition, int size, String text, AnchorPoint anchorPoint, String font) {
+	public Button(Core core, Coordinate2D initialPosition, int size, String text, AnchorPoint anchorPoint, String font, boolean doFlash) {
         super(initialPosition, text);
         this.core = core;
         this.size = size;
         this.anchorPoint = anchorPoint;
         this.font = font;
+        this.doFlash = doFlash;
         create();
 	}
 	
-	public Button(Core core, Coordinate2D initialPosition, int size, String text, Color color, AnchorPoint anchorPoint, String font) {
+	public Button(Core core, Coordinate2D initialPosition, int size, String text, Color color, AnchorPoint anchorPoint, String font, boolean doFlash) {
         super(initialPosition, text);
         this.core = core;
         this.size = size;
         this.color = color;
         this.anchorPoint = anchorPoint;
         this.font = font;
+        this.doFlash = doFlash;
         create();
 	}
     
@@ -71,13 +75,13 @@ public abstract class Button extends DynamicTextEntity implements MouseButtonPre
     @Override
     public void onMouseEntered() {
     	setCursor(Cursor.HAND);
-    	flasher.resume();
+    	if(doFlash) flasher.resume();
     }
 
     @Override
     public void onMouseExited() {
     	setCursor(Cursor.DEFAULT);
-    	flasher.reset();
+    	if(doFlash) flasher.reset();
     }
     
 	@Override
