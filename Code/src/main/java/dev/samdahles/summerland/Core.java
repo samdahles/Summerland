@@ -46,9 +46,9 @@ public class Core extends YaegerGame {
     
     public void setupCharacters() {
     	this.characterList = new ArrayList<Character>();
-    	this.characterList.add(new Character("CharSprites/Nate/", "Nate", Affiliation.GOOD, true));
-    	this.characterList.add(new Character("CharSprites/Heggard/", "Heggard", Affiliation.BAD, true));
-    	this.characterList.add(new Character("CharSprites/Rhett/", "Rhett", Affiliation.GOOD, true));
+    	this.characterList.add(new Character("CharSprites/Nate/", "Nate", Affiliation.GOOD));
+    	this.characterList.add(new Character("CharSprites/Heggard/", "Heggard", Affiliation.BAD));
+    	this.characterList.add(new Character("CharSprites/Rhett/", "Rhett", Affiliation.GOOD));
         setSize(new Size(960, 900));
     }
 
