@@ -8,6 +8,7 @@ import com.github.hanyaeger.api.entities.impl.CustomFont;
 
 import dev.samdahles.summerland.entities.characters.Character.Affiliation;
 import dev.samdahles.summerland.scenes.dialog.DialogScene;
+import dev.samdahles.summerland.scenes.game.MapScene;
 import dev.samdahles.summerland.scenes.menus.CreditsScene;
 import dev.samdahles.summerland.scenes.menus.MainMenuScene;
 import dev.samdahles.summerland.entities.characters.Character;
@@ -26,7 +27,7 @@ public class Core extends YaegerGame {
 	public MainMenuScene mainMenuScene;
 	public CreditsScene creditsScene;
 	public DialogScene dialogScene;
-	
+	public GameScene gameScene;
 	
 	public ArrayList<Character> characterList;
 
@@ -48,6 +49,7 @@ public class Core extends YaegerGame {
     	this.characterList.add(new Character("CharSprites/Nate/", "Nate", Affiliation.GOOD, true));
     	this.characterList.add(new Character("CharSprites/Heggard/", "Heggard", Affiliation.BAD, true));
     	this.characterList.add(new Character("CharSprites/Rhett/", "Rhett", Affiliation.GOOD, true));
+        setSize(new Size(960, 900));
     }
 
     @Override
@@ -55,11 +57,13 @@ public class Core extends YaegerGame {
         this.mainMenuScene = new MainMenuScene(this);
         this.creditsScene = new CreditsScene(this);
         this.dialogScene = new DialogScene(this);
-        
+        this.gameScene = new GameScene(this);
+
         addScene(SCENE_MAINMENU, this.mainMenuScene);
-        // addScene(SCENE_GAME, new GameScene(this));
+        addScene(SCENE_GAME, this.gameScene);
         addScene(SCENE_CREDITS, this.creditsScene);
         addScene(SCENE_DIALOG, this.dialogScene);
+
     }
     
     
