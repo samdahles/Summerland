@@ -13,8 +13,7 @@ public class ContinueButton extends Button {
 
 	@Override
 	public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2d) {
-		
-		//this.core.setActiveScene(core.SCENE_GAME);
+		this.core.setActiveScene(core.SCENE_GAME);
 		System.out.println("Continue");
 	}
 }
