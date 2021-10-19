@@ -1,34 +1,33 @@
 package dev.samdahles.summerland.scenes.menus;
 
+import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 
 import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.entities.ui.buttons.menus.main.ContinueButton;
 import dev.samdahles.summerland.entities.ui.buttons.menus.main.CreditsButton;
-import dev.samdahles.summerland.entities.ui.buttons.menus.main.NewGameButton;
 import dev.samdahles.summerland.entities.ui.buttons.menus.main.QuitButton;
-import dev.samdahles.summerland.entities.ui.buttons.menus.main.SettingsButton;
 
 public class MainMenuScene extends MenuScene {
+
+	private final static int MARGIN_LEFT = 40;
+	private final static int BUTTON_SIZE = 30;
+	private final static int MARGIN_TOP = 20;
+
+    
     public MainMenuScene(Core core) {
-        super(core, "SUMMERLAND", true);
+        super(core, "SUMMERLAND", new Coordinate2D(MARGIN_LEFT, MARGIN_TOP + 60), AnchorPoint.TOP_LEFT, true);
     }
 
     public void setupMenuEntities() {
-        int buttonSize = 30;
-        int buttonX = 40;
-        int buttonYMargin = 20;
+
         double buttonYOffset = (getHeight() / 2) - 20;
         
-        ContinueButton continueButton = new ContinueButton(this.core, new Coordinate2D(buttonX, buttonYOffset), buttonSize);
-        // NewGameButton newGameButton   = new NewGameButton (this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 1 + buttonSize * 1), buttonSize);
-        SettingsButton settingsButton = new SettingsButton(this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 1 + buttonSize * 1), buttonSize);
-        CreditsButton creditsButton   = new CreditsButton (this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 2 + buttonSize * 2), buttonSize);
-        QuitButton quitButton         = new QuitButton    (this.core, new Coordinate2D(buttonX, buttonYOffset + buttonYMargin * 3 + buttonSize * 3), buttonSize);
+        ContinueButton continueButton = new ContinueButton(this.core, new Coordinate2D(MARGIN_LEFT, buttonYOffset), BUTTON_SIZE, 30);
+        CreditsButton creditsButton   = new CreditsButton (this.core, new Coordinate2D(MARGIN_LEFT, buttonYOffset + MARGIN_TOP * 1 + BUTTON_SIZE * 1), BUTTON_SIZE);
+        QuitButton quitButton         = new QuitButton    (this.core, new Coordinate2D(MARGIN_LEFT, buttonYOffset + MARGIN_TOP * 2 + BUTTON_SIZE * 2), BUTTON_SIZE);
         
         this.addEntity(continueButton);
-        // this.addEntity(newGameButton);
-        this.addEntity(settingsButton);
         this.addEntity(creditsButton);
         this.addEntity(quitButton);
     }

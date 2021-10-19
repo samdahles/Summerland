@@ -12,11 +12,15 @@ public abstract class MenuScene extends DynamicScene {
     protected Core core;
     private String title;
     private boolean main;
+    private Coordinate2D titleLocation;
+    private AnchorPoint fromAnchorPoint;
 
-    public MenuScene(Core core, String title, boolean main) {
+    public MenuScene(Core core, String title, Coordinate2D titleLocation, AnchorPoint fromAnchorPoint, boolean main) {
         this.core = core;
         this.title = title;
         this.main = main;
+        this.titleLocation = titleLocation;
+        this.fromAnchorPoint = fromAnchorPoint;
     }
 
     @Override
@@ -31,7 +35,7 @@ public abstract class MenuScene extends DynamicScene {
     	int titleYMain = 140;
     	int titleSize = 40;
     	
-        Text titleText = new Text(new Coordinate2D(getWidth() / 2, this.main ? titleYMain : titleY), titleSize, this.title, AnchorPoint.TOP_CENTER, "PressStart2P");
+        Text titleText = new Text(this.titleLocation, titleSize, this.title, this.fromAnchorPoint, "PressStart2P");
         this.addEntity(titleText);
         
         if (!main) {
