@@ -7,14 +7,12 @@ import com.github.hanyaeger.api.entities.impl.CustomFont;
 import dev.samdahles.summerland.scenes.game.MapScene;
 import dev.samdahles.summerland.scenes.menus.CreditsScene;
 import dev.samdahles.summerland.scenes.menus.MainMenuScene;
-import dev.samdahles.summerland.scenes.menus.SettingsScene;
 
 public class Core extends YaegerGame {
 	public static final int SCENE_MAINMENU = 0;
 	public static final int SCENE_GAME = 1;
 	public static final int SCENE_SETTINGS = 2;
 	public static final int SCENE_CREDITS = 3;
-
     public static void main(String[] args) {
         launch(args);
     }

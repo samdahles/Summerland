@@ -8,7 +8,7 @@ import dev.samdahles.summerland.entities.ui.Text;
 
 public class CreditsScene extends MenuScene {
     public CreditsScene(Core core) {
-        super(core, "CREDITS", false);
+        super(core, "CREDITS", new Coordinate2D(0, 0), AnchorPoint.BOTTOM_CENTER, false);
     }
 
     public void setupMenuEntities() {
