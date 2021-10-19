@@ -5,8 +5,8 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public class TileEntity extends SpriteEntity {
-	public TileEntity(final Coordinate2D location, final Size size) {
-        super("Maps/Base2.png", location, 136, 8);
+	public TileEntity(final Coordinate2D location, final Size size, final int tileId) {
+        super("Tiles/tile"+ tileId + ".png", location, 1, 1);
     }
 }
 

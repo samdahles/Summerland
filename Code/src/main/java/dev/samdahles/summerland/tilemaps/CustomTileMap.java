@@ -39,8 +39,7 @@ public class CustomTileMap {
 					if (TileMap[row][column] == 0) {
 						continue;
 					}
-					TileEntity tile = new TileEntity(new Coordinate2D(32 * column, 32 * row - 32), new Size(32));
-					tile.setCurrentFrameIndex(TileMap[row][column] - 1);
+					TileEntity tile = new TileEntity(new Coordinate2D(32 * column, 32 * row - 32), new Size(32), TileMap[row][column] - 1);
 					list.add(tile);
 				}
 			}

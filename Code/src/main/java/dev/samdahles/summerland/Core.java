@@ -64,6 +64,7 @@ public class Core extends YaegerGame {
         addScene(SCENE_CREDITS, this.creditsScene);
         addScene(SCENE_DIALOG, this.dialogScene);
 
+
     }
     
     
