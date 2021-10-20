@@ -16,6 +16,8 @@ import org.xml.sax.InputSource;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 
+import dev.samdahles.summerland.entities.tiles.ColliderTile;
+import dev.samdahles.summerland.entities.tiles.NormalTile;
 import dev.samdahles.summerland.entities.tiles.TileEntity;
 
 public class CustomTileMap {
@@ -69,18 +71,17 @@ public class CustomTileMap {
 							
 							String currentLayerName = currentNode.getAttributes().item(2).getTextContent();
 							int height = 1;
-							
-							if (currentLayerName == "Ground" || currentLayerName == "Flowers") {
+							if (currentLayerName.equals("Ground") || currentLayerName.equals("Flowers"))  {
 								height = 1;
-							} else if (currentLayerName == "Riser") {
+								tileMap.add(new NormalTile(new Coordinate2D(32 * column, 32 * row - 32), new Size(32), TileId - 1, height));
+							} else if (currentLayerName.equals("Riser")) {
 								height = 2;
-							} else if (currentLayerName == "Buildings" || currentLayerName == "Building Props" || 
-									currentLayerName == "Props" || currentLayerName == "Door" || currentLayerName == "Door 2") {
+								tileMap.add(new NormalTile(new Coordinate2D(32 * column, 32 * row - 32), new Size(32), TileId - 1, height));
+							} else if (currentLayerName.equals("Buildings") || currentLayerName.equals("Building Props") || currentLayerName.equals("Beach") ||
+									currentLayerName.equals("Props") || currentLayerName.equals("Door") || currentLayerName.equals("Door 2")) {
 								height = 4;
+								tileMap.add(new ColliderTile(new Coordinate2D(32 * column, 32 * row - 32), new Size(32), TileId - 1, height));
 							}
-							
-							tileMap.add(new TileEntity(new Coordinate2D(32 * column, 32 * row - 32), new Size(32), TileId - 1, height));
-							
 						}
 					}
 					tileMaps.addAll(tileMap);

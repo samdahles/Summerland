@@ -4,7 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
-public class TileEntity extends SpriteEntity {
+public abstract class TileEntity extends SpriteEntity {
 	int yHeight; 
 	int tileId;
 	

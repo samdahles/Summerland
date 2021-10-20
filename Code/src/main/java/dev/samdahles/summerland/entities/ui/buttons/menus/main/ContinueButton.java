@@ -4,7 +4,6 @@ import com.github.hanyaeger.api.Coordinate2D;
 
 import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.Story;
-import dev.samdahles.summerland.Story.Affiliation;
 import dev.samdahles.summerland.entities.ui.buttons.Button;
 import javafx.scene.input.MouseButton;
 

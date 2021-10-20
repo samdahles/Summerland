@@ -53,12 +53,14 @@ public class GameScene extends DynamicScene implements KeyListener {
     public void setupEntities() {
     	CustomTileMap map = this.customTileMap;
     	if(this.customTileMap == null) {
-    		map = new CustomTileMap("3-2");
+    		map = new CustomTileMap("3-1");
     		this.customTileMap = map;
     	}
     	for (TileEntity tile : map.getTiles()) {
     		this.addEntity(tile);
-    	}	
+    	}
+    	
+    	setPlayableCharacter(new PlayableCharacter(new Coordinate2D(0,0), "Nate", "CharSprites/Nate/"));
     }
 
 	@Override
