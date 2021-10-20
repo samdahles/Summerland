@@ -6,7 +6,6 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
 
 import dev.samdahles.summerland.Core;
-import dev.samdahles.summerland.entities.player.Nate;
 import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.entities.characters.MoveableCharacter;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;

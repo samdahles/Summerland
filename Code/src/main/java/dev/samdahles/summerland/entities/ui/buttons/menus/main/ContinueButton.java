@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 
 import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.Story;
+import dev.samdahles.summerland.Story.Affiliation;
 import dev.samdahles.summerland.entities.ui.buttons.Button;
 import javafx.scene.input.MouseButton;
 
@@ -26,7 +27,6 @@ public class ContinueButton extends Button {
 		Story story = new Story(core);
 		core.gameScene.setStory(story);
 			
-		this.core.dialogScene.setup(initDialog, Affiliation.GOOD, "Images/MainMenuBackground.jpg");
 		this.core.setActiveScene(Core.SCENE_GAME);
 	}
 }
