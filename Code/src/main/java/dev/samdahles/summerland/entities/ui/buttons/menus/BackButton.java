@@ -11,7 +11,7 @@ public class BackButton extends Button {
 	private int targetScene;
 	
     public BackButton(Coordinate2D initialPosition, int size, int targetScene, Core core) {
-        super(core, initialPosition, size, "BACK", Color.BLACK, "RobotoBlack", false);
+        super(core, initialPosition, size, "BACK", Color.WHITE, "RobotoBlack", false);
         this.targetScene = targetScene;
     }
 

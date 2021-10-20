@@ -21,7 +21,7 @@ public class MainMenuScene extends MenuScene {
 
     public void setupMenuEntities() {
 
-        double buttonYOffset = (getHeight() / 2) - 20;
+        double buttonYOffset = (getHeight() / 2) + 70;
         
         ContinueButton continueButton = new ContinueButton(this.core, new Coordinate2D(MARGIN_LEFT, buttonYOffset), BUTTON_SIZE, 30);
         CreditsButton creditsButton   = new CreditsButton (this.core, new Coordinate2D(MARGIN_LEFT, buttonYOffset + MARGIN_TOP * 1 + BUTTON_SIZE * 1), BUTTON_SIZE);

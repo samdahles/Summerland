@@ -3,19 +3,18 @@ package dev.samdahles.summerland.scenes.dialog;
 import java.util.Map;
 import java.util.Set;
 
-import javax.annotation.Nullable;
 
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
 
 import dev.samdahles.summerland.Core;
-import dev.samdahles.summerland.entities.characters.Character.Affiliation;
-import dev.samdahles.summerland.entities.characters.Character;
+import dev.samdahles.summerland.Story.Affiliation;
+import dev.samdahles.summerland.entities.characters.TalkingCharacter;
 import dev.samdahles.summerland.entities.dialogbox.DialogBox;
 import javafx.scene.input.KeyCode;
 public class DialogScene extends DynamicScene implements KeyListener {
 
-	private Map<Character, String> book;
+	private Map<TalkingCharacter, String> book;
 	private Affiliation typeDialog;
 	private String backgroundPath;
 	private Core core;
@@ -25,14 +24,14 @@ public class DialogScene extends DynamicScene implements KeyListener {
 		this.core = core;
 	}
 	
-	public void setup(Map<Character, String> book, Affiliation typeDialog, String backgroundPath) {
+	public void setup(Map<TalkingCharacter, String> book, Affiliation typeDialog, String backgroundPath) {
 		this.book = book;
 		this.typeDialog = typeDialog;
 		this.backgroundPath = backgroundPath;
 		this.book = book;
 	}
 	
-	public void setup(Map<Character, String> book, Affiliation typeDialog) {
+	public void setup(Map<TalkingCharacter, String> book, Affiliation typeDialog) {
 		this.book = book;
 		this.typeDialog = typeDialog;
 		this.backgroundPath = null;

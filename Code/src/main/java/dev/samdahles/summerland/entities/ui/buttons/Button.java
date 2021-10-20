@@ -17,7 +17,7 @@ public abstract class Button extends DynamicTextEntity implements MouseButtonPre
     protected final Core core;
     
     private int size;
-    private Color color = Color.BLACK;
+    private Color color = Color.WHITE;
     private AnchorPoint anchorPoint = AnchorPoint.TOP_LEFT;
     private String font;
     private boolean doFlash = true;

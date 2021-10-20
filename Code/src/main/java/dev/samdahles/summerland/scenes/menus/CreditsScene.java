@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 
 import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.entities.ui.Text;
+import javafx.scene.paint.Color;
 
 public class CreditsScene extends MenuScene {
     public CreditsScene(Core core) {
@@ -17,10 +18,10 @@ public class CreditsScene extends MenuScene {
     	
     	double width = this.getWidth() / 2;
     	
-    	Text development = new Text(new Coordinate2D(width, textYOffset), 30, "Development", AnchorPoint.TOP_CENTER, "RobotoBlack");
-    	Text sam    = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 1), 25, "Sam", AnchorPoint.TOP_CENTER, "Roboto");
-    	Text dylan  = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 2), 25, "Dylan", AnchorPoint.TOP_CENTER, "Roboto");
-    	Text thomas = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 3), 25, "Thomas", AnchorPoint.TOP_CENTER, "Roboto");
+    	Text development = new Text(new Coordinate2D(width, textYOffset), 30, "Development", Color.RED, AnchorPoint.TOP_CENTER, "RobotoBlack");
+    	Text sam    = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 1), 20, "Sam", Color.BLUE, AnchorPoint.TOP_CENTER, "PressStart2P");
+    	Text dylan  = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 2), 20, "Dylan", Color.BLUE, AnchorPoint.TOP_CENTER, "PressStart2P");
+    	Text thomas = new Text(new Coordinate2D(width, textYOffset + 10 + textSize * 3), 20, "Thomas", Color.BLUE, AnchorPoint.TOP_CENTER, "PressStart2P");
     	
     	this.addEntity(development);
     	this.addEntity(sam);
