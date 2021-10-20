@@ -3,7 +3,6 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 
 import dev.samdahles.summerland.Core;
-import dev.samdahles.summerland.Person;
 import dev.samdahles.summerland.entities.player.Nate;
 import dev.samdahles.summerland.entities.tiles.TileEntity;
 import dev.samdahles.summerland.tilemaps.CustomTileMap;

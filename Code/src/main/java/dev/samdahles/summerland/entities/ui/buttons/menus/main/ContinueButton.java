@@ -36,7 +36,7 @@ public class ContinueButton extends Button {
 		
 		
 		this.core.dialogScene.setup(initDialog, Affiliation.GOOD, "Images/MainMenuBackground.jpg");
-		this.core.setActiveScene(Core.SCENE_DIALOG);
+		this.core.setActiveScene(Core.SCENE_GAME);
 
 	}
 }

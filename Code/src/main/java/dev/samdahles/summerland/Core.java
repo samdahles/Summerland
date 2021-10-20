@@ -9,7 +9,6 @@ import com.github.hanyaeger.api.entities.impl.CustomFont;
 import dev.samdahles.summerland.entities.characters.Character.Affiliation;
 import dev.samdahles.summerland.scenes.dialog.DialogScene;
 import dev.samdahles.summerland.scenes.game.GameScene;
-import dev.samdahles.summerland.scenes.game.MapScene;
 import dev.samdahles.summerland.scenes.menus.CreditsScene;
 import dev.samdahles.summerland.scenes.menus.MainMenuScene;
 import dev.samdahles.summerland.entities.characters.Character;

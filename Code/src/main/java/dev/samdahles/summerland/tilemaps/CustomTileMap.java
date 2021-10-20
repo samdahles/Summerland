@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 
 import com.github.hanyaeger.api.Coordinate2D;
@@ -23,31 +24,14 @@ public class CustomTileMap {
 	
 	public CustomTileMap(String mapName) {
 		this.mapName = mapName;
-		createTileEntities();
+		tmxToTileMap();
 	}
 	
 	public List<TileEntity> getTiles() {
 		return Tiles;
 	}
-	private void createTileEntities() {
-		List<TileEntity> list = new ArrayList<TileEntity>();
-		List<int[][]> TileMaps = csvToTileMap();
-		for (int[][] TileMap : TileMaps) {
-			for (int row = 0; row < TileMap.length; row++) {
-				for (int column = 0; column < TileMap[row].length; column++) {
 
-					if (TileMap[row][column] == 0) {
-						continue;
-					}
-					TileEntity tile = new TileEntity(new Coordinate2D(32 * column, 32 * row - 32), new Size(32), TileMap[row][column] - 1);
-					list.add(tile);
-				}
-			}
-		}
-		Tiles = list;
-	}
-
-	private List<int[][]> csvToTileMap() {
+	private void tmxToTileMap() {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setValidating(true);
 		dbf.setNamespaceAware(true);
@@ -56,37 +40,53 @@ public class CustomTileMap {
 		Document doc = null;
 		try {
 			DocumentBuilder builder = dbf.newDocumentBuilder();
-			// builder.setErrorHandler(new ErrorHandler());
+			//builder.setErrorHandler(new ErrorHandler());
 			InputSource is = new InputSource("src/main/resources/Maps/" + mapName + ".tmx");
 			doc = builder.parse(is);
 
 		} catch (Exception e) {
 			System.err.println(e);
 		}
-
-		List<int[][]> tilemaps = new ArrayList<>();
+		
+		List<TileEntity> tileMaps = new ArrayList<>();
 		NodeList nodeList = doc.getDocumentElement().getChildNodes();
 		for (int i = 0; i < nodeList.getLength(); i++) {
 			Node currentNode = nodeList.item(i);
 			if (currentNode.getNodeType() == Node.ELEMENT_NODE) {
 				if (currentNode.getNodeName() == "layer") {
-					int[][] TileMap = new int[30][30];
+					List<TileEntity> tileMap = new ArrayList<>();
 					String[] tileRows = currentNode.getChildNodes().item(1).getTextContent().split("\n");
 					tileRows = Arrays.copyOfRange(tileRows, 1, tileRows.length);
+					
 					for (int row = 1; row < tileRows.length; row++) {
 						String[] rowArray = tileRows[row].trim().strip().split(",");
+						
 						for (int column = 0; column < rowArray.length; column++) {
-							TileMap[row][column] = Integer.parseInt(rowArray[column]);
+							int TileId = Integer.parseInt(rowArray[column]);
+							if (TileId == 0) {
+								continue;
+							}
+							
+							String currentLayerName = currentNode.getAttributes().item(2).getTextContent();
+							int height = 1;
+							
+							if (currentLayerName == "Ground" || currentLayerName == "Flowers") {
+								height = 1;
+							} else if (currentLayerName == "Riser") {
+								height = 2;
+							} else if (currentLayerName == "Buildings" || currentLayerName == "Building Props" || 
+									currentLayerName == "Props" || currentLayerName == "Door" || currentLayerName == "Door 2") {
+								height = 4;
+							}
+							
+							tileMap.add(new TileEntity(new Coordinate2D(32 * column, 32 * row - 32), new Size(32), TileId - 1, height));
+							
 						}
 					}
-					tilemaps.add(TileMap);
+					tileMaps.addAll(tileMap);
 				}
 			}
 		}
-
-		for (int[][] cache : tilemaps) {
-			System.out.println(Arrays.deepToString(cache));
-		}
-		return tilemaps;
+		Tiles = tileMaps;
 	}
 }
