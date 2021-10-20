@@ -1,5 +1,7 @@
 package dev.samdahles.summerland.scenes.menus;
 
+import java.util.Random;
+
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
@@ -15,18 +17,31 @@ public abstract class MenuScene extends DynamicScene {
     private Coordinate2D titleLocation;
     private AnchorPoint fromAnchorPoint;
 
+    private static int previousBackground;
+    
     public MenuScene(Core core, String title, Coordinate2D titleLocation, AnchorPoint fromAnchorPoint, boolean main) {
         this.core = core;
         this.title = title;
         this.main = main;
         this.titleLocation = titleLocation;
         this.fromAnchorPoint = fromAnchorPoint;
+        
     }
 
     @Override
     public void setupScene() {
-        setBackgroundAudio("Music/MainMenuTheme.mp3");
-        setBackgroundImage("Images/MainMenuBackground.gif");
+        setBackgroundAudio("Music/OST.mp3");
+        int random = new Random().nextInt(3);
+        while(true) {
+        	if(random != this.previousBackground) {
+        		break;
+        	} else {
+        		random = new Random().nextInt(3);
+        	}
+        }
+        this.previousBackground = random;
+        
+        setBackgroundImage("Images/MenuBackground" + random + ".gif");
     }
 
     @Override
