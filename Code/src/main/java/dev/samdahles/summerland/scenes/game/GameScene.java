@@ -2,6 +2,7 @@ package dev.samdahles.summerland.scenes.game;
 import java.util.Set;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
 
@@ -17,7 +18,7 @@ public class GameScene extends DynamicScene implements KeyListener {
     protected Core core;
     public PlayableCharacter player;
     private CustomTileMap customTileMap;
-    private Story story;
+    private Story story;    
     
     public GameScene(Core core) {
     	this.core = core;
@@ -46,7 +47,7 @@ public class GameScene extends DynamicScene implements KeyListener {
     
     @Override
     public void setupScene() {
-        setBackgroundAudio("Music/MainTheme.mp3");
+        // setBackgroundAudio("Music/MainTheme.mp3");
     }
 
     @Override

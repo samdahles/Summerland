@@ -17,6 +17,7 @@ public class MainMenuScene extends MenuScene {
     
     public MainMenuScene(Core core) {
         super(core, "SUMMERLAND", new Coordinate2D(MARGIN_LEFT, MARGIN_TOP + 60), AnchorPoint.TOP_LEFT, true);
+        core.OST.play();
     }
 
     public void setupMenuEntities() {

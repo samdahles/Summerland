@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.impl.DynamicTextEntity;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.userinput.MouseExitListener;
@@ -22,7 +23,9 @@ public abstract class Button extends DynamicTextEntity implements MouseButtonPre
     private String font;
     private boolean doFlash = true;
     protected ButtonFlasher flasher = new ButtonFlasher(this, 15, 0.025);
-
+    protected SoundClip hoverSound = new SoundClip("Music/Select.mp3");
+    protected SoundClip confirmSound = new SoundClip("Music/Confirm.mp3");
+    
 	public Button(Core core, Coordinate2D initialPosition, int size, String text, String font, boolean doFlash) {
         super(initialPosition, text);
         this.core = core;
@@ -69,6 +72,7 @@ public abstract class Button extends DynamicTextEntity implements MouseButtonPre
         this.setFont(Core.getFont(this.font, this.size));
     }
 
+    
     @Override
     public abstract void onMouseButtonPressed(final MouseButton button, final Coordinate2D coordinate2D);
 
@@ -76,6 +80,8 @@ public abstract class Button extends DynamicTextEntity implements MouseButtonPre
     public void onMouseEntered() {
     	setCursor(Cursor.HAND);
     	if(doFlash) flasher.resume();
+    	this.hoverSound.play();
+    	
     }
 
     @Override

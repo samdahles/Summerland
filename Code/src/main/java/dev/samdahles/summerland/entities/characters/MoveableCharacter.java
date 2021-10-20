@@ -49,16 +49,16 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 
 	public void move(Direction direction) {
 		if (direction == Direction.UP) {
-			setMotion(1, 180d);
+			setMotion(1.5, 180d);
 			this.setCurrentFrameIndex(10);
 		} else if (direction == Direction.LEFT) {
-			setMotion(1, 270d);
+			setMotion(1.5, 270d);
 			this.setCurrentFrameIndex(4);
 		} else if (direction == Direction.RIGHT) {
-			setMotion(1, 90d);
+			setMotion(1.5, 90d);
 			this.setCurrentFrameIndex(7);
 		} else if (direction == Direction.DOWN) {
-			setMotion(1, 0d);
+			setMotion(1.5, 0d);
 			this.setCurrentFrameIndex(2);
 		}
 

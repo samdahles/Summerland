@@ -30,18 +30,22 @@ public abstract class MenuScene extends DynamicScene {
 
     @Override
     public void setupScene() {
+    	/*
+    	int countBackgrounds = 8;
         setBackgroundAudio("Music/OST.mp3");
-        int random = new Random().nextInt(3);
+        int random = new Random().nextInt(countBackgrounds);
         while(true) {
-        	if(random != this.previousBackground) {
+        	if(random != MenuScene.previousBackground) {
         		break;
         	} else {
-        		random = new Random().nextInt(3);
+        		random = new Random().nextInt(countBackgrounds);
         	}
         }
-        this.previousBackground = random;
-        
-        setBackgroundImage("Images/MenuBackground" + random + ".gif");
+    	
+        System.out.println("Set background MenuBackground" + random);
+        MenuScene.previousBackground = random;
+        */
+        setBackgroundImage("Images/MenuBackground1.gif");
     }
 
     @Override

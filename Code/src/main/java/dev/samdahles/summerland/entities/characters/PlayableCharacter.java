@@ -1,6 +1,5 @@
 package dev.samdahles.summerland.entities.characters;
 
-import java.util.Random;
 import java.util.Set;
 
 import com.github.hanyaeger.api.Coordinate2D;
@@ -8,6 +7,7 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.userinput.KeyListener;
 
 import dev.samdahles.summerland.Core;
@@ -15,15 +15,15 @@ import dev.samdahles.summerland.Story.Affiliation;
 import javafx.scene.input.KeyCode;
 
 public class PlayableCharacter extends TalkingCharacter implements KeyListener, Collided {
-	
+
 	public PlayableCharacter(Coordinate2D initialLocation, String name, String charFolder) {
-		super(name, charFolder, initialLocation, new Size(48, 64), 4, 3, Affiliation.GOOD);
+		super(name, charFolder, initialLocation, Core.GENERIC_SIZE, 4, 3, Affiliation.GOOD);
 	}
 	
 	@Override
 	public void onCollision(Collider collidingObject){
 		if(this.getLastDirection() == Direction.UP) {
-		  this.setAnchorLocationY(this.getAnchorLocation().getY() + 2.2);
+		  this.setAnchorLocationY(this.getAnchorLocation().getY() + 2);
 		} else if(this.getLastDirection() == Direction.LEFT) {
 		this.setAnchorLocationX(this.getAnchorLocation().getX() + 2);
 		} else if(this.getLastDirection() == Direction.RIGHT) {
@@ -31,6 +31,8 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 		} else if(this.getLastDirection() == Direction.DOWN) {	
 			this.setAnchorLocationY(this.getAnchorLocation().getY() - 2);
 		}
+
+		
 	}
 
 	@Override

@@ -41,7 +41,6 @@ public class Story {
 				new PlayableCharacter(new Coordinate2D(1,1), "Nate", "CharSprites/Nate/")
 				);
 	}
-
 	
 	public void addCharacter(MoveableCharacter character) {
 		core.gameScene.addCharacter(character);

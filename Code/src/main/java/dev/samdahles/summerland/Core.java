@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 import com.github.hanyaeger.api.entities.impl.CustomFont;
+import com.github.hanyaeger.api.media.SoundClip;
 
 import dev.samdahles.summerland.Story.Affiliation;
 import dev.samdahles.summerland.scenes.dialog.DialogScene;
@@ -20,13 +21,14 @@ public class Core extends YaegerGame {
 	public static final int SCENE_CREDITS = 2;
 	public static final int SCENE_DIALOG = 3;
 	
-	public static final Size GENERIC_SIZE = new Size(48, 64);	
+	public static final Size GENERIC_SIZE = new Size(48, 48);	
 	
 	public MainMenuScene mainMenuScene;
 	public CreditsScene creditsScene;
 	public DialogScene dialogScene;
 	public GameScene gameScene;
 	
+	public SoundClip OST = new SoundClip("Music/OST.mp3");
 	
     public static void main(String[] args) {
         launch(args);
