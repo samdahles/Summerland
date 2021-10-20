@@ -7,18 +7,18 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.StaticScene;
 
-import dev.samdahles.summerland.entities.characters.Character;
+import dev.samdahles.summerland.entities.characters.TalkingCharacter;
 import dev.samdahles.summerland.entities.ui.Text;
 
 public class DialogBox {
 	
-	private Map<Character, String> book;
+	private Map<TalkingCharacter, String> book;
 	private Text text;
-	private Entry<Character, String> entry;
+	private Entry<TalkingCharacter, String> entry;
 	private DynamicDialogSprite dynamicDialogSprite;
 	
 	
-	public DialogBox (Map<Character, String> book, StaticScene parentScene) {
+	public DialogBox (Map<TalkingCharacter, String> book, StaticScene parentScene) {
 		this.book = book;
 		this.entry = book.entrySet().iterator().next();
 		

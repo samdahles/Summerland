@@ -25,8 +25,8 @@ public abstract class MenuScene extends DynamicScene {
 
     @Override
     public void setupScene() {
-        setBackgroundAudio("Music/MainTheme.mp3");
-        setBackgroundImage("Images/MainMenuBackground.jpg");
+        setBackgroundAudio("Music/MainMenuTheme.mp3");
+        setBackgroundImage("Images/MainMenuBackground.gif");
     }
 
     @Override

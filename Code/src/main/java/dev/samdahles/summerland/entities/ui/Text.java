@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 public class Text extends TextEntity {
 	private int size;
 	
-	private Color color = Color.BLACK;
+	private Color color = Color.WHITE;
 	private AnchorPoint anchorPoint = AnchorPoint.TOP_LEFT;
 	private String font;
 	
