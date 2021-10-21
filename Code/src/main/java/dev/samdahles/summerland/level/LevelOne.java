@@ -21,12 +21,6 @@ public class LevelOne extends Level {
 		PlayableCharacter nate = CommonCharacters.getNate();
 		MoveableCharacter rhett = CommonCharacters.getRhett();
 		
-		rhett.setInteract(new Runnable() {
-			public void run() {
-				System.out.println("Sample Runnable");
-			}
-		});
-		
 		nate.setAnchorLocationY(15);
 		rhett.setAnchorLocationY(100);
 		
