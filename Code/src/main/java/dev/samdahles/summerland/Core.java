@@ -21,7 +21,7 @@ public class Core extends YaegerGame {
 	public static final int SCENE_CREDITS = 2;
 	public static final int SCENE_DIALOG = 3;
 	
-	public static final Size GENERIC_SIZE = new Size(48, 48);	
+	public static final Size GENERIC_SIZE = new Size(32, 32);	
 	
 	public MainMenuScene mainMenuScene;
 	public CreditsScene creditsScene;
@@ -44,10 +44,14 @@ public class Core extends YaegerGame {
 
     @Override
     public void setupScenes() {
+    	
+    	// TODO: Check if Serialized object is in resources
+		Story story = new Story(this);
+    	
         this.mainMenuScene = new MainMenuScene(this);
         this.creditsScene = new CreditsScene(this);
         this.dialogScene = new DialogScene(this);
-        this.gameScene = new GameScene(this);
+        this.gameScene = new GameScene(this, story);
 
         addScene(SCENE_MAINMENU, this.mainMenuScene);
         addScene(SCENE_GAME, this.gameScene);

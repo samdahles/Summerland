@@ -1,5 +1,6 @@
 package dev.samdahles.summerland.entities.characters;
 
+import java.util.Date;
 import java.util.Set;
 
 import com.github.hanyaeger.api.Coordinate2D;
@@ -16,12 +17,24 @@ import javafx.scene.input.KeyCode;
 
 public class PlayableCharacter extends TalkingCharacter implements KeyListener, Collided {
 
+	private long previousCollisionTimestamp = new Date().getTime() / 1000;
+	private SoundClip collisionSound = new SoundClip("Music/Collision.mp3");
+	private Collider previousCollider = null;
 	public PlayableCharacter(Coordinate2D initialLocation, String name, String charFolder) {
 		super(name, charFolder, initialLocation, Core.GENERIC_SIZE, 4, 3, Affiliation.GOOD);
 	}
 	
 	@Override
 	public void onCollision(Collider collidingObject){
+		long collisionTimestamp = new Date().getTime() / 1000;
+		
+		if(collisionTimestamp - this.previousCollisionTimestamp >= 2 || !collidingObject.equals(previousCollider)) {
+			this.collisionSound.play();
+		}
+		
+		this.previousCollider = collidingObject;
+		this.previousCollisionTimestamp = collisionTimestamp;
+		
 		if(this.getLastDirection() == Direction.UP) {
 		  this.setAnchorLocationY(this.getAnchorLocation().getY() + 2);
 		} else if(this.getLastDirection() == Direction.LEFT) {
@@ -48,6 +61,6 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 		} else if (pressedKeys.isEmpty()) {
 			this.stopMove();
 		}
-
+		System.out.println(this.getAnchorLocation().toString());
 	}
 }

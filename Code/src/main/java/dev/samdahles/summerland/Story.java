@@ -1,18 +1,15 @@
 package dev.samdahles.summerland;
 
-import java.util.Set;
+import java.io.Serializable;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.userinput.KeyListener;
-
 
 import dev.samdahles.summerland.entities.characters.MoveableCharacter;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
-import dev.samdahles.summerland.tilemaps.CustomTileMap;
-import javafx.scene.input.KeyCode;
+import dev.samdahles.summerland.level.Level;
+import dev.samdahles.summerland.level.LevelOne;
 
-public class Story {
+public class Story implements Serializable {
 	/*
 	Map<Character, String> initDialog = new HashMap<Character, String>();
 	
@@ -32,32 +29,13 @@ public class Story {
 		BAD
 	}
 	
-	private Core core;
+	private Core core;	
+	public Level currentLevel;
 	
 	public Story(Core core) {
 		this.core = core;
-		this.startLevelOne();
-		core.gameScene.setPlayableCharacter(
-				new PlayableCharacter(new Coordinate2D(1,1), "Nate", "CharSprites/Nate/")
-				);
-	}
-	
-	public void addCharacter(MoveableCharacter character) {
-		core.gameScene.addCharacter(character);
-	}
-	
-	public void startLevelOne() {
-		// core.gameScene.setTilemap(new CustomTileMap("2-3"));
-		core.setActiveScene(Core.SCENE_GAME);
-		// TODO: Set up entities
-		this.addCharacter(new MoveableCharacter(
-				"Rhett", 
-				"CharSprites/Rhett/", 
-				new Coordinate2D(1,2),
-				new Size(32, 32),
-				4, 3,
-				Affiliation.GOOD
-				));
+		this.currentLevel = new LevelOne();
+		
 	}
 	
 	public void save() {

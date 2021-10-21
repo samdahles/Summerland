@@ -1,11 +1,15 @@
 package dev.samdahles.summerland.entities.ui.buttons.menus.main;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.Direction;
 
 import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.entities.ui.buttons.Button;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.input.MouseButton;
+import javafx.util.Duration;
 
 public class ContinueButton extends Button {
 	private Core core;
@@ -20,13 +24,10 @@ public class ContinueButton extends Button {
 		
 		this.confirmSound.play();
 		core.OST.stop();
+		
+		
 		// TODO: OPTIONAL: move up when clicked
 		System.out.println("Continue");
-		
-		
-		// TODO: Check if Serialized object is in resources
-		Story story = new Story(core);
-		core.gameScene.setStory(story);
 			
 		this.core.setActiveScene(Core.SCENE_GAME);
 	}

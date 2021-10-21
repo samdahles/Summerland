@@ -20,24 +20,9 @@ public class GameScene extends DynamicScene implements KeyListener {
     private CustomTileMap customTileMap;
     private Story story;    
     
-    public GameScene(Core core) {
+    public GameScene(Core core, Story story) {
     	this.core = core;
-    }
-    
-    public void addCharacter(MoveableCharacter character) {
-    	this.addEntity(character);
-    }
-    
-    public void setStory(Story story) {
     	this.story = story;
-    }
-    
-    public void setPlayableCharacter(PlayableCharacter playableCharacter) {
-    	if(this.player != null) {
-        	this.player.remove();
-    	}
-    	this.player = playableCharacter;
-    	this.addEntity(this.player);
     }
     
     public void setTilemap(CustomTileMap map) {
@@ -61,7 +46,15 @@ public class GameScene extends DynamicScene implements KeyListener {
     		this.addEntity(tile);
     	}
     	
-    	setPlayableCharacter(new PlayableCharacter(new Coordinate2D(0,0), "Nate", "CharSprites/Nate/"));
+    	
+    	
+    	for(MoveableCharacter character : this.story.currentLevel.entityList) {
+    		this.addEntity(character);
+    	}
+    	
+    	this.addEntity(this.story.currentLevel.playableCharacter);
+    	
+    	
     }
 
 	@Override
