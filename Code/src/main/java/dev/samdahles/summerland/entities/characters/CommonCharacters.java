@@ -12,7 +12,7 @@ public class CommonCharacters {
 		return new PlayableCharacter(new Coordinate2D(1,1), "Nate", "CharSprites/Nate/");
 	}
 	
-	public static final MoveableCharacter getRhett() {
+	public static final TalkingCharacter getRhett() {
 		return new TalkingCharacter(
 				"Rhett", 
 				"CharSprites/Rhett/", 
@@ -20,6 +20,17 @@ public class CommonCharacters {
 				Core.GENERIC_SIZE,
 				4, 3,
 				Affiliation.GOOD
+				);
+	}
+	
+	public static final TalkingCharacter getHeggard() {
+		return new TalkingCharacter(
+				"Heggard",
+				"CharSprites/Heggard",
+				new Coordinate2D(1,1),
+				Core.GENERIC_SIZE,
+				4, 3,
+				Affiliation.BAD
 				);
 	}
 	
