@@ -18,7 +18,6 @@ public class CommonCharacters {
 				"CharSprites/Rhett/", 
 				new Coordinate2D(1,1),
 				Core.GENERIC_SIZE,
-				4, 3,
 				Affiliation.GOOD
 				);
 	}
@@ -29,7 +28,6 @@ public class CommonCharacters {
 				"CharSprites/Heggard",
 				new Coordinate2D(1,1),
 				Core.GENERIC_SIZE,
-				4, 3,
 				Affiliation.BAD
 				);
 	}

@@ -18,8 +18,8 @@ public class TalkingCharacter extends MoveableCharacter {
 	 * @param column the number of sprites divided over the y-axis
 	 * @param affiliation the {@link Affiliation} that the character has
 	 */
-	public TalkingCharacter(String name, String charFolder, Coordinate2D anchorLocation, Size size, int row, int column, Affiliation affiliation) {
-		super(name, charFolder, anchorLocation, size, row, column, affiliation);
+	public TalkingCharacter(String name, String charFolder, Coordinate2D anchorLocation, Size size, Affiliation affiliation) {
+		super(name, charFolder, anchorLocation, size, affiliation);
 	}
 	
 	/** 
