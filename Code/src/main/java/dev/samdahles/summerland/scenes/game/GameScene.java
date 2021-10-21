@@ -56,6 +56,7 @@ public class GameScene extends DynamicScene implements KeyListener {
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
 		if(pressedKeys.contains(KeyCode.ESCAPE)) {
+			core.OST.play();
 			story.saveAndMainMenu();
 		}
 	}
