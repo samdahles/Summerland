@@ -20,7 +20,7 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 	protected String charFolder;
 	private Affiliation affiliation;
 	private Runnable onInteract;
-	
+	private String allowedTileset;
 	
 	public static ArrayList<MoveableCharacter> characterList = new ArrayList<MoveableCharacter>();
 	
@@ -44,6 +44,16 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
             System.out.println("Attempted to interact but no Runnable was set");
         }};
 		MoveableCharacter.characterList.add(this);
+	}
+	
+	
+	
+	public void setAllowedTileset(String tileset) {
+		this.allowedTileset = tileset; 
+	}
+	
+	public String getAllowedTileset() {
+		return this.allowedTileset;
 	}
 	
 	/**
