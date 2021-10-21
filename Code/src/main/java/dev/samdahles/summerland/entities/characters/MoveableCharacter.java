@@ -15,50 +15,43 @@ import dev.samdahles.summerland.Story.Affiliation;
 public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 
 	private Direction lastMove;
-	protected int characterId;
 	protected String name;
 	protected String charFolder;
-	public static Map<Integer, MoveableCharacter> moveableCharacterList = new HashMap<Integer, MoveableCharacter>();;
 	private Affiliation affiliation;
 
-	public MoveableCharacter(String name, String charFolder, Coordinate2D anchorLocation, Size size, int row,
-			int column, Affiliation affiliation) {
+	/**
+	 * MoveableCharacter is class that all characters on the map either are or extend.
+	 * @param name the name of the character
+	 * @param charFolder the resource folder where Walk.png is located
+	 * @param anchorLocation the initial location of the character
+	 * @param size the size of the character
+	 * @param row the number of sprites divided over the x-axis
+	 * @param column the number of sprites divided over the y-axis
+	 * @param affiliation the {@link Affiliation} that the character has
+	 */
+	public MoveableCharacter(String name, String charFolder, Coordinate2D anchorLocation, Size size, int row, int column, Affiliation affiliation) {
 		super(charFolder + "Walk.png", anchorLocation, size, row, column);
 		this.name = name;
-		this.characterId = MoveableCharacter.moveableCharacterList.size() + 1;
 		this.charFolder = charFolder;
-		MoveableCharacter.moveableCharacterList.put(this.characterId, this);
 		this.setCurrentFrameIndex(1);
 	}
 
-	public static void removeCharacter(int id) {
-		MoveableCharacter.moveableCharacterList.remove(id);
-	}
-
-	public void removeCharacter() {
-		MoveableCharacter.moveableCharacterList.remove(this.characterId);
-	}
-
-	public void setLocation(Coordinate2D location) {
-		this.setAnchorLocation(location);
-	}
-
-	public Coordinate2D getLocation() {
-		return this.getAnchorLocation();
-	}
-
+	/**
+	 * Moves the character.
+	 * @param direction the {@link Direction} the character should move (indefinitely).
+	 */
 	public void move(Direction direction) {
 		if (direction == Direction.UP) {
-			setMotion(1, 180d);
+			setMotion(1.5, 180d);
 			this.setCurrentFrameIndex(10);
 		} else if (direction == Direction.LEFT) {
-			setMotion(1, 270d);
+			setMotion(1.5, 270d);
 			this.setCurrentFrameIndex(4);
 		} else if (direction == Direction.RIGHT) {
-			setMotion(1, 90d);
+			setMotion(1.5, 90d);
 			this.setCurrentFrameIndex(7);
 		} else if (direction == Direction.DOWN) {
-			setMotion(1, 0d);
+			setMotion(1.5, 0d);
 			this.setCurrentFrameIndex(2);
 		}
 
@@ -66,34 +59,32 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 
 	}
 
-	public void moveUp() {
-		this.move(Direction.UP);
-	}
-
-	public void moveLeft() {
-		this.move(Direction.LEFT);
-	}
-
-	public void moveDown() {
-		this.move(Direction.DOWN);
-	}
-
-	public void moveRight() {
-		this.move(Direction.RIGHT);
-	}
-
+	/**
+	 * Stops movement of the character.
+	 */
 	public void stopMove() {
 		this.setSpeed(0);
 	}
 
+	/**
+	 * Gets the last direction the character went.
+	 */
 	public Direction getLastDirection() {
 		return this.lastMove;
 	}
-
+	
+	/**
+	 * Get the {@link Affiliation} of the character.
+	 * @return
+	 */
 	public Affiliation getAffiliation() {
 		return this.affiliation;
 	}
 
+	/**
+	 * Set the {@link Affiliation} of the character.
+	 * @param affiliation
+	 */
 	public void setAffiliation(Affiliation affiliation) {
 		this.affiliation = affiliation;
 	}

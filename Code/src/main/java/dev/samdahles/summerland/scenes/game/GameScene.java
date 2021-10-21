@@ -2,6 +2,7 @@ package dev.samdahles.summerland.scenes.game;
 import java.util.Set;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
 
@@ -15,28 +16,14 @@ import javafx.scene.input.KeyCode;
 
 public class GameScene extends DynamicScene implements KeyListener {
     protected Core core;
+    private SoundClip backgroundSound = null;
     public PlayableCharacter player;
     private CustomTileMap customTileMap;
-    private Story story;
+    private Story story;    
     
-    public GameScene(Core core) {
+    public GameScene(Core core, Story story) {
     	this.core = core;
-    }
-    
-    public void addCharacter(MoveableCharacter character) {
-    	this.addEntity(character);
-    }
-    
-    public void setStory(Story story) {
     	this.story = story;
-    }
-    
-    public void setPlayableCharacter(PlayableCharacter playableCharacter) {
-    	if(this.player != null) {
-        	this.player.remove();
-    	}
-    	this.player = playableCharacter;
-    	this.addEntity(this.player);
     }
     
     public void setTilemap(CustomTileMap map) {
@@ -46,9 +33,10 @@ public class GameScene extends DynamicScene implements KeyListener {
     
     @Override
     public void setupScene() {
-        setBackgroundAudio("Music/MainTheme.mp3");
+        // setBackgroundAudio("Music/MainTheme.mp3");
     }
-
+    
+    
     @Override
     public void setupEntities() {
     	CustomTileMap map = this.customTileMap;
@@ -59,8 +47,10 @@ public class GameScene extends DynamicScene implements KeyListener {
     	for (TileEntity tile : map.getTiles()) {
     		this.addEntity(tile);
     	}
-    	
-    	setPlayableCharacter(new PlayableCharacter(new Coordinate2D(0,0), "Nate", "CharSprites/Nate/"));
+    	for(MoveableCharacter character : this.story.currentLevel.entityList) {
+    		this.addEntity(character);
+    	}
+    	this.addEntity(this.story.currentLevel.playableCharacter);	
     }
 
 	@Override
@@ -69,4 +59,26 @@ public class GameScene extends DynamicScene implements KeyListener {
 			story.saveAndMainMenu();
 		}
 	}
+	
+	
+	public void setSound(String path) {
+		this.backgroundSound = new SoundClip(path);
+	}
+	
+	public void playSound() {
+		if(this.backgroundSound != null) {
+			this.backgroundSound.play();
+		}
+	}
+	
+	public void stopSound() {
+		if(this.backgroundSound != null) {
+			this.backgroundSound.stop();
+		}
+	}
+	
+	public void setSoundVolume(double volume) {
+		this.backgroundSound.setVolume(volume);
+	}
+	
 }

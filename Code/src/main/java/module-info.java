@@ -3,6 +3,7 @@ module Summerland {
 	requires jsr305;
 	requires java.xml;
 	requires transitive javafx.graphics;
+	requires javafx.base;
     exports dev.samdahles.summerland;
     
     opens Fonts;

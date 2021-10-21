@@ -5,17 +5,24 @@ import com.github.hanyaeger.api.Timer;
 public class ButtonFlasher extends Timer {
 	
 	private Button button;
-	
 	private double step;
-	
 	private boolean down = true;
 	
-	public ButtonFlasher(Button button, int intervalInMs, double stepPerInterval) {
+	
+	/**
+	 * {@link Timer} that causes a button to flash at specified interval
+	 * @param button the button that will be flashed
+	 * @param intervalInMs the interval in which the button will be flashing 
+	 * @param stepPerInterval the number of steps it takes per interval to go from translucent to visible
+	 */
+	ButtonFlasher(Button button, int intervalInMs, double stepPerInterval) {
 		super(intervalInMs);
 		this.button = button;
 		this.step = stepPerInterval;
 	}
 	
+	
+	/** Sets the {@link Button} to visible */
 	public void reset() {
 		pause();
 		button.setOpacity(1);
