@@ -11,19 +11,11 @@ import dev.samdahles.summerland.level.Level;
 import dev.samdahles.summerland.level.LevelOne;
 
 public class Story implements Serializable {
-	/*
-	Map<Character, String> initDialog = new HashMap<Character, String>();
-	
-	initDialog.put(core.characterList.get(Core.NATE), "Hello.");
-	initDialog.put(core.characterList.get(Core.RHETT), "Hello.");
-	initDialog.put(core.characterList.get(Core.NATE), "Let's play.");
-	
-	
-	this.core.dialogScene.setup(initDialog, Affiliation.GOOD, "Images/MainMenuBackground.jpg");
-	this.core.setActiveScene(Core.SCENE_DIALOG);
-	*/
-	
-	//this.core.setActiveScene(Core.SCENE_GAME);
+	private Core core;	
+	public Level currentLevel;
+	private int currentAreaX;
+	private int currentAreaY;
+	private Coordinate2D currentPlayerPos;
 	
 	/**
 	 * Affiliations for characters in the game. 
@@ -33,14 +25,7 @@ public class Story implements Serializable {
 		GOOD,
 		BAD
 	}
-	
-	private Core core;	
-	public Level currentLevel;
-	private int currentAreaX;
-	private int currentAreaY;
-	private Coordinate2D currentPlayerPos;
-	
-	
+		
 	/**
 	 * Story is the object that effectively resembles a savegame.
 	 * It is responsible for keeping track of the {@code currentLevel} and the entities in it.
@@ -48,9 +33,9 @@ public class Story implements Serializable {
 	 */
 	public Story(Core core) {
 		this.core = core;
-		this.currentLevel = new LevelOne();
 		this.currentAreaY = 1;
 		this.currentAreaX = 1;
+		this.currentLevel = new LevelOne(core);
 	}
 	
 	public void setCurrentArea(int areaX, int areaY) {

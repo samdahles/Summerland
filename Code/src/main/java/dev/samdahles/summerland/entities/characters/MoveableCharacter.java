@@ -1,6 +1,7 @@
 package dev.samdahles.summerland.entities.characters;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +19,12 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 	protected String name;
 	protected String charFolder;
 	private Affiliation affiliation;
-
+	private Runnable onInteract;
+	private String allowedTileset;
+	
+	public static ArrayList<MoveableCharacter> characterList = new ArrayList<MoveableCharacter>();
+	
+	
 	/**
 	 * MoveableCharacter is class that all characters on the map either are or extend.
 	 * @param name the name of the character
@@ -29,11 +35,66 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 	 * @param column the number of sprites divided over the y-axis
 	 * @param affiliation the {@link Affiliation} that the character has
 	 */
-	public MoveableCharacter(String name, String charFolder, Coordinate2D anchorLocation, Size size, int row, int column, Affiliation affiliation) {
-		super(charFolder + "Walk.png", anchorLocation, size, row, column);
+	public MoveableCharacter(String name, String charFolder, Coordinate2D anchorLocation, Size size, Affiliation affiliation) {
+		super(charFolder + "Walk.png", anchorLocation, size, 4, 3);
 		this.name = name;
 		this.charFolder = charFolder;
 		this.setCurrentFrameIndex(1);
+		this.onInteract = new Runnable() { public void run() {
+            System.out.println("Attempted to interact but no Runnable was set");
+        }};
+		MoveableCharacter.characterList.add(this);
+	}
+	
+	
+	
+	public void setAllowedTileset(String tileset) {
+		this.allowedTileset = tileset; 
+	}
+	
+	public String getAllowedTileset() {
+		return this.allowedTileset;
+	}
+	
+	/**
+	 * Sets the onInteract {@link Runnable} that will be executed on interact
+	 * @param runnable the {@link Runnable} that will be executed on interact
+	 */
+	public void setInteract(Runnable runnable) {
+		this.onInteract = runnable;
+	}
+	
+	public void interact() {
+		this.onInteract.run();
+	}
+	
+	
+	public String toString() {
+		return "MoveableCharacter " + this.name;
+	}
+	
+	
+	/** Get the {@link Direction} a MoveableCharacter is facing */
+	@SuppressWarnings("unlikely-arg-type")
+	public Direction getFacing() {
+		int frameIndex = this.getCurrentFrameIndex();
+		int[] downIndexes = {1, 2, 3};
+		int[] leftIndexes = {4, 5, 6};
+		int[] rightIndexes = {7, 8, 9};
+		int[] upIndexes = {10, 11, 12};
+		
+		if(Arrays.asList(downIndexes).contains(frameIndex)) {
+			return Direction.DOWN;
+		} else if(Arrays.asList(leftIndexes).contains(frameIndex)) {
+			return Direction.LEFT;
+		} else if(Arrays.asList(rightIndexes).contains(frameIndex)) {
+			return Direction.RIGHT;
+		} else if(Arrays.asList(upIndexes).contains(frameIndex)) {
+			return Direction.UP;
+		}
+		
+		return null;
+		
 	}
 
 	/**
@@ -56,7 +117,6 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 		}
 
 		lastMove = direction;
-
 	}
 
 	/**

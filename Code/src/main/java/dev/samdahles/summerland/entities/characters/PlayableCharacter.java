@@ -1,5 +1,6 @@
 package dev.samdahles.summerland.entities.characters;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -27,13 +28,12 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 	private Collider previousCollider = null;
 
 	public PlayableCharacter(Coordinate2D initialLocation, String name, String charFolder) {
-		super(name, charFolder, initialLocation, Core.GENERIC_SIZE, 4, 3, Affiliation.GOOD);
+		super(name, charFolder, initialLocation, Core.GENERIC_SIZE, Affiliation.GOOD);
 	}
 	
 	@Override
 	public void notifyBoundaryTouching(SceneBorder border){
 	    setSpeed(0);
-	    System.out.print("hey");
 	    switch(border){
 	        case TOP:
 	            setAnchorLocationY(1);
@@ -72,8 +72,23 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 		} else if(this.getLastDirection() == Direction.DOWN) {	
 			this.setAnchorLocationY(this.getAnchorLocation().getY() - 2.2);
 		}
-
-		
+	}
+	
+	/**
+	 * Get an ArrayList of all nearby {@link MoveableCharacter}
+	 * @param range the range from the {@link PlayableCharacter} to the nearby MoveableCharacters which should be returned
+	 * @return an {@link ArrayList} of all nearby MoveableCharacters
+	 */
+	public ArrayList<MoveableCharacter> getNearbyCharacters(double range) {
+		ArrayList<MoveableCharacter> moveableCharacters = new ArrayList<MoveableCharacter>();
+		for(MoveableCharacter character : MoveableCharacter.characterList) {
+			if(!character.equals(this)) {
+				if(character.getAnchorLocation().distance(this.getAnchorLocation()) < range) {
+					moveableCharacters.add(character);
+				}
+			}
+		}
+		return moveableCharacters;
 	}
 
 	@Override
@@ -86,9 +101,18 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 			this.move(Direction.UP);
 		} else if (pressedKeys.contains(KeyCode.S) || pressedKeys.contains(KeyCode.DOWN)) {
 			this.move(Direction.DOWN);
+		} else if (pressedKeys.contains(KeyCode.E)) {
+			
+			ArrayList<MoveableCharacter> nearbyCharacters = this.getNearbyCharacters(40);
+			if(!nearbyCharacters.isEmpty()) {
+				for(MoveableCharacter character : nearbyCharacters) {
+					character.interact();
+					break;
+				}
+			}
 		} else if (pressedKeys.isEmpty()) {
 			this.stopMove();
 		}
-		System.out.println(this.getAnchorLocation().toString());
+	
 	}
 }
