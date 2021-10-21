@@ -8,7 +8,6 @@ import com.github.hanyaeger.api.entities.impl.CustomFont;
 import com.github.hanyaeger.api.media.SoundClip;
 
 import dev.samdahles.summerland.Story.Affiliation;
-import dev.samdahles.summerland.scenes.dialog.DialogScene;
 import dev.samdahles.summerland.scenes.game.GameScene;
 import dev.samdahles.summerland.scenes.menus.CreditsScene;
 import dev.samdahles.summerland.scenes.menus.MainMenuScene;
