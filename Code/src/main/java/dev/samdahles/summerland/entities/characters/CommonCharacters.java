@@ -13,7 +13,7 @@ public class CommonCharacters {
 	}
 	
 	public static final MoveableCharacter getRhett() {
-		return new MoveableCharacter(
+		return new TalkingCharacter(
 				"Rhett", 
 				"CharSprites/Rhett/", 
 				new Coordinate2D(1,1),
