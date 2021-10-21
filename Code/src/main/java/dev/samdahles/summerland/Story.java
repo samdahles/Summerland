@@ -3,6 +3,7 @@ package dev.samdahles.summerland;
 import java.io.Serializable;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.Direction;
 
 import dev.samdahles.summerland.entities.characters.MoveableCharacter;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
@@ -35,6 +36,9 @@ public class Story implements Serializable {
 	
 	private Core core;	
 	public Level currentLevel;
+	private int currentAreaX;
+	private int currentAreaY;
+	private Coordinate2D currentPlayerPos;
 	
 	
 	/**
@@ -45,10 +49,35 @@ public class Story implements Serializable {
 	public Story(Core core) {
 		this.core = core;
 		this.currentLevel = new LevelOne();
-		
+		this.currentAreaY = 1;
+		this.currentAreaX = 1;
 	}
 	
+	public void setCurrentArea(int areaX, int areaY) {
+		this.currentAreaY = areaY;	
+		this.currentAreaX = areaX;
+	}
 	
+	public int getCurrentAreaX() {
+		return currentAreaX;
+	}
+	
+	public int getCurrentAreaY() {
+		return currentAreaY;
+	}
+	
+	public void setCurrentPlayerPos(Coordinate2D currentPos) {
+		this.currentPlayerPos = currentPos;
+	}
+	
+	public Coordinate2D getCurrentPlayerPos() {
+		return currentPlayerPos;
+	}
+	
+	public Boolean switchMapArea(Direction direction) {
+		core.setActiveScene(4);
+		return false;
+	}
 	/** Serializes story and saves (and possibly overwrites) {@link src/main/resources/Savegame.ser} */
 	public void save() {
 		// TODO: Serialize Story

@@ -41,7 +41,7 @@ public class GameScene extends DynamicScene implements KeyListener {
     public void setupEntities() {
     	CustomTileMap map = this.customTileMap;
     	if(this.customTileMap == null) {
-    		map = new CustomTileMap("3-1");
+    		map = new CustomTileMap(story.getCurrentAreaX() + "-" + story.getCurrentAreaY());
     		this.customTileMap = map;
     	}
     	for (TileEntity tile : map.getTiles()) {

@@ -74,11 +74,8 @@ public class CustomTileMap {
 							if (currentLayerName.equals("Ground") || currentLayerName.equals("Flowers"))  {
 								height = 1;
 								tileMap.add(new NormalTile(new Coordinate2D(32 * column, 32 * row - 32), new Size(32), TileId - 1, height));
-							} else if (currentLayerName.equals("Riser")) {
-								height = 2;
-								tileMap.add(new NormalTile(new Coordinate2D(32 * column, 32 * row - 32), new Size(32), TileId - 1, height));
-							} else if (currentLayerName.equals("Buildings") || currentLayerName.equals("Building Props") || currentLayerName.equals("Beach") ||
-									currentLayerName.equals("Props") || currentLayerName.equals("Door") || currentLayerName.equals("Door 2")) {
+							}  else if (currentLayerName.equals("Buildings") || currentLayerName.equals("Building Props") || currentLayerName.equals("Beach") ||
+									currentLayerName.equals("Props") || currentLayerName.equals("Door") || currentLayerName.equals("Door 2") || currentLayerName.equals("Riser")) {
 								height = 4;
 								tileMap.add(new ColliderTile(new Coordinate2D(32 * column, 32 * row - 32), new Size(32), TileId - 1, height));
 							}
