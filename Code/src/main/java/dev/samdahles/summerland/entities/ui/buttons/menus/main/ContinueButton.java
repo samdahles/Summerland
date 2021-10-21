@@ -14,7 +14,14 @@ import javafx.util.Duration;
 public class ContinueButton extends Button {
 	private Core core;
 
-    public ContinueButton(Core core, Coordinate2D initialPosition, int size, double moveUpWhenClicked) {
+	/**
+	 * Creates a button with a fixed text of 'Continue' in Roboto. This button flashes on hover.
+	 * It plays a confirm sound and sets the active scene to {@link Core.SCENE_GAME} on click.
+	 * @param core the core object
+	 * @param initialPosition position of the button
+	 * @param size font size of the button
+	 */
+    public ContinueButton(Core core, Coordinate2D initialPosition, int size) {
         super(core, initialPosition, size, "Continue", "Roboto", true);
         this.core = core;
     }

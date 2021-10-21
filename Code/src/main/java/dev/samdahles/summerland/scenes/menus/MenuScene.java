@@ -16,9 +16,15 @@ public abstract class MenuScene extends DynamicScene {
     private boolean main;
     private Coordinate2D titleLocation;
     private AnchorPoint fromAnchorPoint;
-
-    private static int previousBackground;
     
+    /**
+     * 
+     * @param core the core object
+     * @param title title of the menu
+     * @param titleLocation location of the title
+     * @param fromAnchorPoint the anchor point from where the title should be placed 
+     * @param main if the menu is the mainmenu
+     */
     public MenuScene(Core core, String title, Coordinate2D titleLocation, AnchorPoint fromAnchorPoint, boolean main) {
         this.core = core;
         this.title = title;
@@ -30,21 +36,6 @@ public abstract class MenuScene extends DynamicScene {
 
     @Override
     public void setupScene() {
-    	/*
-    	int countBackgrounds = 8;
-        setBackgroundAudio("Music/OST.mp3");
-        int random = new Random().nextInt(countBackgrounds);
-        while(true) {
-        	if(random != MenuScene.previousBackground) {
-        		break;
-        	} else {
-        		random = new Random().nextInt(countBackgrounds);
-        	}
-        }
-    	
-        System.out.println("Set background MenuBackground" + random);
-        MenuScene.previousBackground = random;
-        */
         setBackgroundImage("Images/MenuBackground1.gif");
     }
 

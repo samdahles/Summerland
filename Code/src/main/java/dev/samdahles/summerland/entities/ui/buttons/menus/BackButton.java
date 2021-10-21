@@ -10,6 +10,14 @@ import javafx.scene.paint.Color;
 public class BackButton extends Button {
 	private int targetScene;
 	
+	
+	/**
+	 * Creates a button with a fixed text of 'BACK' in white RobotoBlack.
+	 * @param initialPosition position of the button
+	 * @param size font size of the button
+	 * @param targetScene scene which should be set if the button is clicked
+	 * @param core the core object
+	 */
     public BackButton(Coordinate2D initialPosition, int size, int targetScene, Core core) {
         super(core, initialPosition, size, "BACK", Color.WHITE, "RobotoBlack", false);
         this.targetScene = targetScene;

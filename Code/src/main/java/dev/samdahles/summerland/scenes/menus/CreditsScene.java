@@ -17,7 +17,10 @@ public class CreditsScene extends MenuScene {
 	private Color headingColor = Color.BLACK;
 	private double width;
 
-	
+	/**
+	 * Creates a scene with the information of everybody who helped developing this game.
+	 * @param core the core object
+	 */
     public CreditsScene(Core core) {
         super(core, "CREDITS", new Coordinate2D(0, 0), AnchorPoint.BOTTOM_CENTER, false);
     }

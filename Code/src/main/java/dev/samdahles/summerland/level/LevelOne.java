@@ -7,7 +7,9 @@ import dev.samdahles.summerland.entities.characters.MoveableCharacter;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
 
 public class LevelOne extends Level {
-	
+	/**
+	 * Level One is the first level of the game. Nate appears here alongside Rhett.
+	 */
 	public LevelOne() {
 		super();
 	}

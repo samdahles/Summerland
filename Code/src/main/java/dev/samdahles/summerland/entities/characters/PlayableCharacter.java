@@ -52,13 +52,13 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
 		if (pressedKeys.contains(KeyCode.A) || pressedKeys.contains(KeyCode.LEFT)) {
-			this.moveLeft();
+			this.move(Direction.LEFT);
 		} else if (pressedKeys.contains(KeyCode.D) || pressedKeys.contains(KeyCode.RIGHT)) {
-			this.moveRight();
+			this.move(Direction.RIGHT);
 		} else if (pressedKeys.contains(KeyCode.W) || pressedKeys.contains(KeyCode.UP)) {
-			this.moveUp();
+			this.move(Direction.UP);
 		} else if (pressedKeys.contains(KeyCode.S) || pressedKeys.contains(KeyCode.DOWN)) {
-			this.moveDown();
+			this.move(Direction.DOWN);
 		} else if (pressedKeys.isEmpty()) {
 			this.stopMove();
 		}

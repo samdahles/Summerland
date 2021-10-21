@@ -5,11 +5,19 @@ import java.util.ArrayList;
 import dev.samdahles.summerland.entities.characters.MoveableCharacter;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
 
+
+/**
+ * 
+ * A Level is responsible for handling all characters at a time.
+ * This class simplifies having different entities at a given time.
+ * This class is abstract and should be extended by a custom level e.g. {@link LevelOne}.
+ *
+ */
 public abstract class Level {
 	public ArrayList<MoveableCharacter> entityList = new ArrayList<MoveableCharacter>();
 	public PlayableCharacter playableCharacter;
 	
-	
+
 	protected Level() {
 		this.setupLevel();
 	}
@@ -35,5 +43,8 @@ public abstract class Level {
 		this.playableCharacter.remove();
 	}
 	
+	/**
+	 * This method should be used to create all entities.
+	 */
 	public abstract void setupLevel();
 }

@@ -14,7 +14,10 @@ public class MainMenuScene extends MenuScene {
 	private final static int BUTTON_SIZE = 30;
 	private final static int MARGIN_TOP = 20;
 
-    
+    /**
+     * Creates the main menu
+     * @param core the core object
+     */
     public MainMenuScene(Core core) {
         super(core, "SUMMERLAND", new Coordinate2D(MARGIN_LEFT, MARGIN_TOP + 60), AnchorPoint.TOP_LEFT, true);
         core.OST.play();
@@ -24,7 +27,7 @@ public class MainMenuScene extends MenuScene {
 
         double buttonYOffset = (getHeight() / 2) + 70;
         
-        ContinueButton continueButton = new ContinueButton(this.core, new Coordinate2D(MARGIN_LEFT, buttonYOffset), BUTTON_SIZE, 30);
+        ContinueButton continueButton = new ContinueButton(this.core, new Coordinate2D(MARGIN_LEFT, buttonYOffset), BUTTON_SIZE);
         CreditsButton creditsButton   = new CreditsButton (this.core, new Coordinate2D(MARGIN_LEFT, buttonYOffset + MARGIN_TOP * 1 + BUTTON_SIZE * 1), BUTTON_SIZE);
         QuitButton quitButton         = new QuitButton    (this.core, new Coordinate2D(MARGIN_LEFT, buttonYOffset + MARGIN_TOP * 2 + BUTTON_SIZE * 2), BUTTON_SIZE);
         
