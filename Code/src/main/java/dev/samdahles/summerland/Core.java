@@ -28,6 +28,7 @@ public class Core extends YaegerGame {
 	public CreditsScene creditsScene;
 	public GameScene gameScene;
 	public SwitchScene switchScene;
+	public DialogScene dialogScene;
 	public SoundClip OST = new SoundClip("Music/OST.mp3");
 	
     public static void main(String[] args) {
@@ -49,11 +50,20 @@ public class Core extends YaegerGame {
         this.creditsScene = new CreditsScene(this);
         this.gameScene = new GameScene(this, story);
         this.switchScene = new SwitchScene(this);
+	this.dialogScene = new DialogScene(this);
+	    
+	dialogScene.setCharacter("Rhett");
+	String[] dialog = {
+		"Hallo, mijn naam is Rhett.",
+		"Leuk je te ontmoeten.",
+	};
+	dialogScene.setDialog(dialog);
 
         addScene(SCENE_MAINMENU, this.mainMenuScene);
         addScene(SCENE_GAME, this.gameScene);
         addScene(SCENE_CREDITS, this.creditsScene);
         addScene(SCENE_SWITCH, this.switchScene);
+	addScene(SCENE_DIALOG, this.dialogScene);
     }
     
 	public static CustomFont getFont(String font, int size) {
