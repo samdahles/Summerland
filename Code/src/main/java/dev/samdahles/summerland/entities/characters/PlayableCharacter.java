@@ -28,7 +28,8 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 	public void onCollision(Collider collidingObject){
 		long collisionTimestamp = new Date().getTime() / 1000;
 		
-		if(collisionTimestamp - this.previousCollisionTimestamp >= 2 || !collidingObject.equals(previousCollider)) {
+		if(collisionTimestamp - this.previousCollisionTimestamp >= 2 
+				|| !collidingObject.equals(previousCollider)) {
 			this.collisionSound.play();
 		}
 		
