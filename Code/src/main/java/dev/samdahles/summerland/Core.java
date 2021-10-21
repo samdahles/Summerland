@@ -8,6 +8,7 @@ import com.github.hanyaeger.api.entities.impl.CustomFont;
 import com.github.hanyaeger.api.media.SoundClip;
 
 import dev.samdahles.summerland.Story.Affiliation;
+import dev.samdahles.summerland.scenes.dialog.DialogScene;
 import dev.samdahles.summerland.scenes.game.GameScene;
 import dev.samdahles.summerland.scenes.game.SwitchScene;
 import dev.samdahles.summerland.scenes.menus.CreditsScene;
@@ -16,6 +17,9 @@ import dev.samdahles.summerland.entities.characters.TalkingCharacter;
 
 @SuppressWarnings("exports")
 public class Core extends YaegerGame {
+	public static final int SCREEN_WIDTH = 960;
+	public static final int SCREEN_HEIGHT = 900;
+	
 	public static final int SCENE_MAINMENU = 0;
 	public static final int SCENE_GAME = 1;
 	public static final int SCENE_CREDITS = 2;
@@ -38,7 +42,7 @@ public class Core extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Summerland");
-        setSize(new Size(960, 900));
+        setSize(new Size(SCREEN_WIDTH, SCREEN_HEIGHT));
     }
     
     @Override
