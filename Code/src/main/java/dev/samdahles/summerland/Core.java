@@ -21,7 +21,7 @@ public class Core extends YaegerGame {
 	public static final int SCENE_CREDITS = 2;
 	public static final int SCENE_DIALOG = 3;
 	
-	public static final Size GENERIC_SIZE = new Size(32, 32);	
+	public static final Size GENERIC_SIZE = new Size(32, 64);	
 	
 	public MainMenuScene mainMenuScene;
 	public CreditsScene creditsScene;
