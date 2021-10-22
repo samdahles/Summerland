@@ -10,7 +10,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -41,7 +44,17 @@ public class CustomTileMap {
 		Document doc = null;
 		try {
 			DocumentBuilder builder = dbf.newDocumentBuilder();
-			// builder.setErrorHandler(new ErrorHandler());
+			builder.setErrorHandler(new ErrorHandler() {
+				@Override
+				public void warning(SAXParseException exception) throws SAXException {
+				}
+				@Override
+				public void error(SAXParseException exception) throws SAXException {
+				}
+				@Override
+				public void fatalError(SAXParseException exception) throws SAXException {
+				}
+			});
 			InputSource is = new InputSource("src/main/resources/Maps/" + mapName + ".tmx");
 			doc = builder.parse(is);
 

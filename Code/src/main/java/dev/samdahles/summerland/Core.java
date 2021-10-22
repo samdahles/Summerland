@@ -29,36 +29,34 @@ public class Core extends YaegerGame {
 	public SwitchScene switchScene;
 	public DialogScene dialogScene;
 	public SoundClip OST = new SoundClip("Music/OST.mp3");
-	
+
 	public Story story = new Story(this);
-	
-	
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    @Override
-    public void setupGame() {
-        setGameTitle("Summerland");
-        setSize(new Size(SCREEN_WIDTH, SCREEN_HEIGHT));
-    }
-    
-    @Override
-    public void setupScenes() {
-        this.mainMenuScene = new MainMenuScene(this);
-        this.creditsScene = new CreditsScene(this);
-        this.gameScene = new GameScene(this, story);
-        this.switchScene = new SwitchScene(this);
-        this.dialogScene = new DialogScene(this);
+	public static void main(String[] args) {
+		launch(args);
+	}
 
+	@Override
+	public void setupGame() {
+		setGameTitle("Summerland");
+		setSize(new Size(SCREEN_WIDTH, SCREEN_HEIGHT));
+	}
 
-        addScene(SCENE_MAINMENU, this.mainMenuScene);
-        addScene(SCENE_GAME, this.gameScene);
-        addScene(SCENE_CREDITS, this.creditsScene);
-        addScene(SCENE_SWITCH, this.switchScene);
-        addScene(SCENE_DIALOG, this.dialogScene);
-    }
-    
+	@Override
+	public void setupScenes() {
+		this.mainMenuScene = new MainMenuScene(this);
+		this.creditsScene = new CreditsScene(this);
+		this.gameScene = new GameScene(this, story);
+		this.switchScene = new SwitchScene(this);
+		this.dialogScene = new DialogScene(this);
+
+		addScene(SCENE_MAINMENU, this.mainMenuScene);
+		addScene(SCENE_GAME, this.gameScene);
+		addScene(SCENE_CREDITS, this.creditsScene);
+		addScene(SCENE_SWITCH, this.switchScene);
+		addScene(SCENE_DIALOG, this.dialogScene);
+	}
+
 	public static CustomFont getFont(String font, int size) {
 		return new CustomFont("Fonts/" + font + ".ttf", size);
 	}

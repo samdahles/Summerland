@@ -5,23 +5,22 @@ import com.github.hanyaeger.api.entities.Direction;
 
 public class MoveAnimationTimer extends Timer {
 	private MoveableCharacter character;
-	
+
 	private Direction direction;
-	
-	
+
 	private int frameInAnimation = 1;
-	
+
 	public MoveAnimationTimer(MoveableCharacter character, int intervalInMs) {
 		super(intervalInMs);
 		this.character = character;
 		this.stop();
 	}
-	
+
 	public void start(Direction direction) {
 		this.direction = direction;
 		this.resume();
 	}
-	
+
 	public void stop() {
 		this.pause();
 		this.direction = null;
@@ -30,7 +29,7 @@ public class MoveAnimationTimer extends Timer {
 	@Override
 	public void onAnimationUpdate(long timestamp) {
 		int index = character.getCurrentFrameIndex();
-		
+
 		if (direction == Direction.UP) {
 			if (frameInAnimation < character.upIndexes.length) {
 				index++;
@@ -64,7 +63,7 @@ public class MoveAnimationTimer extends Timer {
 				frameInAnimation = 1;
 			}
 		}
-		//System.out.println("Index: " + index + ", Frame: " + frameInAnimation);
+		// System.out.println("Index: " + index + ", Frame: " + frameInAnimation);
 		character.setCurrentFrameIndex(index);
 	}
 }

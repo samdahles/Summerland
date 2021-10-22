@@ -2,7 +2,6 @@ package dev.samdahles.summerland.level;
 
 import java.util.ArrayList;
 
-import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.entities.characters.MoveableCharacter;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
@@ -47,7 +46,8 @@ public abstract class Level {
 	
 	/**
 	 * This method should be used to create all entities.
-	 * @param story 
+	 * 
+	 * @param story
 	 */
 	public abstract void setupLevel(Story story);
 }
