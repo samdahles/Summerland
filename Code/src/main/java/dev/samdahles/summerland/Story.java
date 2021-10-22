@@ -33,8 +33,8 @@ public class Story implements Serializable {
 	 */
 	public Story(Core core) {
 		this.core = core;
-		this.currentAreaY = 1;
-		this.currentAreaX = 1;
+		this.currentAreaY = 3;
+		this.currentAreaX = 2;
 		this.currentLevel = new LevelOne(core);
 	}
 	

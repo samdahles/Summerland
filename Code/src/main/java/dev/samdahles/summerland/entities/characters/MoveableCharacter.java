@@ -11,6 +11,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
+import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.Story.Affiliation;
 
 public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
@@ -20,7 +21,6 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 	protected String charFolder;
 	private Affiliation affiliation;
 	private Runnable onInteract;
-	private String allowedTileset;
 	
 	public static ArrayList<MoveableCharacter> characterList = new ArrayList<MoveableCharacter>();
 	
@@ -40,34 +40,35 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 		this.name = name;
 		this.charFolder = charFolder;
 		this.setCurrentFrameIndex(1);
-		this.onInteract = new Runnable() { public void run() {
-            System.out.println("Attempted to interact but no Runnable was set");
-        }};
+		this.setInteract(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("No Interactable has been set");
+			}
+		});
 		MoveableCharacter.characterList.add(this);
 	}
 	
-	
-	
-	public void setAllowedTileset(String tileset) {
-		this.allowedTileset = tileset; 
-	}
-	
-	public String getAllowedTileset() {
-		return this.allowedTileset;
+	/** Get the name of the character */
+	public String getName() {
+		return this.name;
+		
 	}
 	
 	/**
 	 * Sets the onInteract {@link Runnable} that will be executed on interact
-	 * @param runnable the {@link Runnable} that will be executed on interact
+	 * @param Runnable the {@link Runnable} that will be executed on interact
 	 */
 	public void setInteract(Runnable runnable) {
 		this.onInteract = runnable;
 	}
 	
+	/**
+	 * Run the onInteract {@link Runnable}
+	 */
 	public void interact() {
 		this.onInteract.run();
 	}
-	
 	
 	public String toString() {
 		return "MoveableCharacter " + this.name;
