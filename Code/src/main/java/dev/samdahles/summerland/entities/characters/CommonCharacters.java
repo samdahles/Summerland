@@ -3,13 +3,14 @@ package dev.samdahles.summerland.entities.characters;
 import com.github.hanyaeger.api.Coordinate2D;
 
 import dev.samdahles.summerland.Core;
+import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.Story.Affiliation;
 /**
  * CommonCharacters is a class with static methods that return a {@link MoveableCharacter} 
  */	
 public class CommonCharacters {
-	public static final PlayableCharacter getNate() {
-		return new PlayableCharacter(new Coordinate2D(1,1), "Nate", "CharSprites/Nate/");
+	public static final PlayableCharacter getNate(Story story) {
+		return new PlayableCharacter(new Coordinate2D(1,1), "Nate", "CharSprites/Nate/", story);
 	}
 	
 	public static final TalkingCharacter getRhett() {

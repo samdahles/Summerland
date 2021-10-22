@@ -9,15 +9,16 @@ import dev.samdahles.summerland.entities.characters.PlayableCharacter;
 public class LevelOne extends Level {
 	/**
 	 * Level One is the first level of the game. Nate appears here alongside Rhett.
+	 * @param core 
 	 */
-	public LevelOne(Core core) {
-		super(core);
+	public LevelOne(Story story) {
+		super(story);
 	}
 
 	@Override
-	public void setupLevel() {
+	public void setupLevel(Story story) {
 		
-		PlayableCharacter nate = CommonCharacters.getNate();
+		PlayableCharacter nate = CommonCharacters.getNate(story);
 		MoveableCharacter rhett = CommonCharacters.getRhett();
 		
 		nate.setAnchorLocationY(15);

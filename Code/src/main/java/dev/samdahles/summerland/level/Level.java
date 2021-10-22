@@ -18,11 +18,10 @@ import dev.samdahles.summerland.entities.characters.PlayableCharacter;
 public abstract class Level {
 	public ArrayList<MoveableCharacter> entityList = new ArrayList<MoveableCharacter>();
 	public PlayableCharacter playableCharacter;
-	protected Core core;
-	
-	protected Level(Core core) {
-		this.setupLevel();
-		this.core = core;
+	public Story story;
+
+	protected Level(Story story) {
+		this.setupLevel(story);
 	}
 	
 	public void addCharacter(MoveableCharacter character) {
@@ -48,6 +47,7 @@ public abstract class Level {
 	
 	/**
 	 * This method should be used to create all entities.
+	 * @param story 
 	 */
-	public abstract void setupLevel();
+	public abstract void setupLevel(Story story);
 }
