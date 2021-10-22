@@ -54,6 +54,9 @@ public class Story implements Serializable {
 		this.core.dialogScene.setCharacter(characterName);
 	}
 	
+	public void inheritSetGameScene() {
+		this.core.setActiveScene(Core.SCENE_GAME);
+	}
 	
 	public void setCurrentArea(int areaX, int areaY) {
 		this.currentAreaY = areaY;	

@@ -10,15 +10,17 @@ import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
+import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 
 import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.entities.ui.dialog.DialogBox;
 import dev.samdahles.summerland.entities.ui.dialog.DialogHandler;
 import dev.samdahles.summerland.entities.ui.dialog.DialogHead;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 
-public class DialogScene extends DynamicScene implements TimerContainer, KeyListener {
+public class DialogScene extends DynamicScene implements TimerContainer, KeyListener, MouseButtonPressedListener {
 	protected Core core;
 
 	private final int msBeforeNextCharacter = 50;
@@ -79,19 +81,19 @@ public class DialogScene extends DynamicScene implements TimerContainer, KeyList
 	}
 
 	public void generateText(String text) {
-		handler.setTextToGenerate(text);
-		handler.resume();
+		this.handler.setTextToGenerate(text);
+		this.handler.resume();
 	}
 
 	public void setText(String text) {
 		this.text = text;
-		textEntity.setText(text);
+		this.textEntity.setText(text);
 	}
 
 	public void addChar(char character) {
 		this.text = this.text + character;
-		textEntity.setText(this.text);
-		charAddSound.play();
+		this.textEntity.setText(this.text);
+		this.charAddSound.play();
 	}
 
 	public void setCharacter(String character) {
@@ -101,17 +103,29 @@ public class DialogScene extends DynamicScene implements TimerContainer, KeyList
 
 	@Override
 	public void setupTimers() {
-		addTimer(handler);
+		this.addTimer(handler);
 	}
+	
+	public void continueText() {
+		if (this.dialogProgress < this.dialog.length) {
+			this.setText("");
+			this.generateText(dialog[dialogProgress]);
+			this.dialogProgress++;
+		} else {
+			core.setActiveScene(Core.SCENE_GAME);
+		}
+	}
+	
 
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-		if (pressedKeys.contains(KeyCode.SPACE)) {
-			if (dialogProgress < dialog.length) {
-				setText("");
-				generateText(dialog[dialogProgress]);
-				dialogProgress++;
-			}
+		if (pressedKeys.contains(KeyCode.SPACE) || pressedKeys.contains(KeyCode.E)) {
+			this.continueText();
 		}
+	}
+
+	@Override
+	public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2d) {
+		this.continueText();
 	}
 }

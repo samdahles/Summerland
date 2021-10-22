@@ -12,6 +12,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.Story.Affiliation;
+import dev.samdahles.summerland.interactables.Interactable;
 
 public class MoveableCharacter extends DynamicSpriteEntity implements Collider, TimerContainer {
 
@@ -19,7 +20,7 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider, 
 	protected String name;
 	protected String charFolder;
 	private Affiliation affiliation;
-	private Runnable onInteract;
+	private Interactable onInteract;
 
 	private String allowedTileset;
 	private MoveAnimationTimer timer = new MoveAnimationTimer(this, 250);
@@ -47,7 +48,7 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider, 
 		this.name = name;
 		this.charFolder = charFolder;
 		this.setCurrentFrameIndex(1);
-		this.setInteract(new Runnable() {
+		this.setInteract(new Interactable() {
 			@Override
 			public void run() {
 				System.out.println("No Interactable has been set");
@@ -63,15 +64,15 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider, 
 	}
 	
 	/**
-	 * Sets the onInteract {@link Runnable} that will be executed on interact
-	 * @param Runnable the {@link Runnable} that will be executed on interact
+	 * Sets the onInteract {@link Interactable} that will be executed on interact
+	 * @param interactable the {@link Interactable} that will be executed on interact
 	 */
-	public void setInteract(Runnable runnable) {
-		this.onInteract = runnable;
+	public void setInteract(Interactable interactable) {
+		this.onInteract = interactable;
 	}
 	
 	/**
-	 * Run the onInteract {@link Runnable}
+	 * Run the onInteract {@link Interactable}
 	 */
 	public void interact() {
 		this.onInteract.run();
