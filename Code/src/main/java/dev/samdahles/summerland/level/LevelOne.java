@@ -5,6 +5,7 @@ import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.entities.characters.CommonCharacters;
 import dev.samdahles.summerland.entities.characters.MoveableCharacter;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
+import dev.samdahles.summerland.entities.characters.TalkingCharacter;
 import dev.samdahles.summerland.interactables.Interactable;
 
 public class LevelOne extends Level {
@@ -20,19 +21,19 @@ public class LevelOne extends Level {
 	public void setupLevel(Story story) {
 		
 		PlayableCharacter nate = CommonCharacters.getNate(story);
-		MoveableCharacter rhett = CommonCharacters.getRhett();
+		TalkingCharacter rhett = CommonCharacters.getRhett();
 		
 		nate.setAnchorLocationY(15);
 		rhett.setAnchorLocationY(100);
-
+		
 		Interactable rhettDialog1 = new Interactable(story, rhett) {
 			public void run() {
-				story.inheritSetDialogCharacter(rhett.getName());
-				story.inheritSetDialog(new String[] {
+				story.setDialogCharacter(rhett);
+				story.setDialog(new String[] {
 						"Hi Nate!",
 						"How have you been?"
 				});
-				story.inheritSetDialogScene();
+				story.setDialogScene();
 			}
 		};
 		
