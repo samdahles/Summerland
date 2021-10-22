@@ -80,29 +80,35 @@ public class DialogScene extends DynamicScene implements TimerContainer, KeyList
 		this.addEntity(textEntity);
 	}
 	
-
+	/**
+	 * Set the dialog of the DialogScene
+	 * @param dialog the stringarray of sentences
+	 */
 	public void setDialog(String[] dialog) {
 		this.dialog = dialog;
 		this.dialogProgress = 0;
 	}
 	
-
-	public void generateText(String text) {
+	private void generateText(String text) {
 		this.handler.setTextToGenerate(text);
 		this.handler.resume();
 	}
 
-	public void setText(String text) {
+	private void setText(String text) {
 		this.text = text;
 		this.textEntity.setText(text);
 	}
 
-	public void addChar(char character) {
+	private void addChar(char character) {
 		this.text = this.text + character;
 		this.textEntity.setText(this.text);
 		this.charAddSound.play();
 	}
 
+	/**
+	 * Set the talking {@link TalkingCharacter}
+	 * @param character the character that is talking
+	 */
 	public void setCharacter(TalkingCharacter character) {
 		this.character = character;
 		this.characterName = character.getName();
@@ -110,10 +116,18 @@ public class DialogScene extends DynamicScene implements TimerContainer, KeyList
 		this.head = new DialogHead(headPath, new Coordinate2D(this.headX, this.headY), this.headSize);
 	}
 	
+	
+	/**
+	 * Set a background image as the active background
+	 * @param path the path to the file in the resources folder
+	 */
 	public void setBackground(String path) {
 		this.setBackground(path);
 	}
 	
+	/**
+	 * Set a {@link Color} as active background color
+	 */
 	public void setBackgroundColor(Color color) {
 		this.setBackgroundColor(color);
 	}
@@ -123,6 +137,9 @@ public class DialogScene extends DynamicScene implements TimerContainer, KeyList
 		this.addTimer(handler);
 	}
 	
+	/**
+	 * Set the next string in the stringarray from {@link #setDialog(String[])} as the active dialog
+	 */
 	public void continueText() {
 		if (this.dialogProgress < this.dialog.length) {
 			this.setText("");
