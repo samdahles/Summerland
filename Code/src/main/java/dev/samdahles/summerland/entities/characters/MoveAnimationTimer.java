@@ -32,45 +32,39 @@ public class MoveAnimationTimer extends Timer {
 		int index = character.getCurrentFrameIndex();
 		
 		if (direction == Direction.UP) {
-			if ( (frameInAnimation < character.upIndexes.length)) {
+			if (frameInAnimation < character.upIndexes.length) {
 				index++;
 				frameInAnimation++;
 			} else {
 				index = 9;
 				frameInAnimation = 1;
 			}
-			//oldDirection = direction;
 		} else if (direction == Direction.LEFT) {
-			if ( (frameInAnimation < character.leftIndexes.length)) {
+			if (frameInAnimation < character.leftIndexes.length) {
 				index++;
 				frameInAnimation++;
 			} else {
 				index = 3;
 				frameInAnimation = 1;
 			}
-			//oldDirection = direction;
 		} else if (direction == Direction.RIGHT) {
-			if ( (frameInAnimation < character.rightIndexes.length)) {
+			if (frameInAnimation < character.rightIndexes.length) {
 				index++;
 				frameInAnimation++;
 			} else {
 				index = 6;
 				frameInAnimation = 1;
 			}
-			//oldDirection = direction;
 		} else if (direction == Direction.DOWN) {
-			if ( (frameInAnimation < character.downIndexes.length)) {
+			if (frameInAnimation < character.downIndexes.length) {
 				index++;
 				frameInAnimation++;
 			} else {
 				index = 0;
 				frameInAnimation = 1;
 			}
-			//oldDirection = direction;
 		}
 		//System.out.println("Index: " + index + ", Frame: " + frameInAnimation);
 		character.setCurrentFrameIndex(index);
-		
-		
 	}
 }

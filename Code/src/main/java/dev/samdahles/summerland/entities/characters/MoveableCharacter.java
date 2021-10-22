@@ -24,7 +24,6 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider, 
 	
 	public static ArrayList<MoveableCharacter> characterList = new ArrayList<MoveableCharacter>();
 	
-	private Direction oldDirection;
 	protected int[] downIndexes = {1, 2, 3};
 	protected int[] leftIndexes = {4, 5, 6};
 	protected int[] rightIndexes = {7, 8, 9};
@@ -105,30 +104,22 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider, 
 	 */
 	public void move(Direction direction) {
 		timer.start(direction);
+		int index = 0;
 		if (direction == Direction.UP) {
 			setMotion(1.5, 180d);
-			if (oldDirection != direction) {
-				this.setCurrentFrameIndex(9);
-			}
-			oldDirection = direction;
+			index = 9;
 		} else if (direction == Direction.LEFT) {
 			setMotion(1.5, 270d);
-			if (oldDirection != direction) {
-				this.setCurrentFrameIndex(3);
-			}
-			oldDirection = direction;
+			index = 3;
 		} else if (direction == Direction.RIGHT) {
 			setMotion(1.5, 90d);
-			if (oldDirection != direction) {
-				this.setCurrentFrameIndex(6);
-			}
-			oldDirection = direction;
+			index = 6;
 		} else if (direction == Direction.DOWN) {
 			setMotion(1.5, 0d);
-			if (oldDirection != direction) {
-				this.setCurrentFrameIndex(0);
-			}
-			oldDirection = direction;
+			index = 0;
+		}
+		if (lastMove != direction) {
+			this.setCurrentFrameIndex(index);
 		}
 		lastMove = direction;
 	}

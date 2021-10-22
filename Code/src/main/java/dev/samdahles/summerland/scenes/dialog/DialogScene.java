@@ -20,20 +20,20 @@ import javafx.scene.paint.Color;
 
 public class DialogScene extends DynamicScene implements TimerContainer, KeyListener {
 	protected Core core;
-	
+
 	private final int msBeforeNextCharacter = 50;
 	private final SoundClip charAddSound = new SoundClip("Music/Select.mp3");
-	
+
 	private String[] dialog;
 	private int dialogProgress;
-	
+
 	private String character;
 	private String headPath;
 	private String text = "";
 	private TextEntity textEntity;
-	
+
 	private DialogHandler handler = new DialogHandler(this, msBeforeNextCharacter);
-	
+
 	public DialogScene(Core core) {
 		handler.pause();
 		this.core = core;
@@ -41,19 +41,20 @@ public class DialogScene extends DynamicScene implements TimerContainer, KeyList
 
 	@Override
 	public void setupScene() {
-		setBackgroundImage("Images/MenuBackground1.gif");
+		this.setBackgroundImage("Images/DialogBackground.jpg");
+		core.OST.stop();
 	}
 
 	@Override
 	public void setupEntities() {
 		Size boxSize = new Size(Core.SCREEN_WIDTH, 400);
 		Size headSize = new Size(175, 175);
-		
+
 		double boxY = Core.SCREEN_HEIGHT - boxSize.height() + 50;
 		double headY = boxY - headSize.height();
-		
+
 		int headX = 75;
-		
+
 		DialogBox box = new DialogBox("Images/Dialog.png", new Coordinate2D(0, boxY), boxSize);
 		DialogHead head = new DialogHead(headPath, new Coordinate2D(headX, headY), headSize);
 		TextEntity name = new TextEntity(new Coordinate2D(headX + headX, boxY + 20), character);
@@ -65,34 +66,34 @@ public class DialogScene extends DynamicScene implements TimerContainer, KeyList
 		name.setFill(Color.WHITE);
 		textEntity.setFont(Core.getFont("PressStart2P", 20));
 		textEntity.setFill(Color.WHITE);
-		
+
 		this.addEntity(box);
 		this.addEntity(head);
 		this.addEntity(name);
 		this.addEntity(textEntity);
 	}
-	
+
 	public void setDialog(String[] dialog) {
 		this.dialog = dialog;
 		this.dialogProgress = 0;
 	}
-	
+
 	public void generateText(String text) {
 		handler.setTextToGenerate(text);
 		handler.resume();
 	}
-	
+
 	public void setText(String text) {
 		this.text = text;
 		textEntity.setText(text);
 	}
-	
+
 	public void addChar(char character) {
 		this.text = this.text + character;
 		textEntity.setText(this.text);
 		charAddSound.play();
 	}
-	
+
 	public void setCharacter(String character) {
 		this.character = character;
 		this.headPath = "CharSprites/" + character + "/Head.png";
