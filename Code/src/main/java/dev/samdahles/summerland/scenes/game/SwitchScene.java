@@ -3,13 +3,10 @@ package dev.samdahles.summerland.scenes.game;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 
 import dev.samdahles.summerland.Core;
-import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
-import dev.samdahles.summerland.tilemaps.CustomTileMap;
 import javafx.scene.paint.Color;
 
 public class SwitchScene extends DynamicScene {

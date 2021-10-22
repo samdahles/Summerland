@@ -1,33 +1,28 @@
 package dev.samdahles.summerland;
 
-import java.util.ArrayList;
-
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 import com.github.hanyaeger.api.entities.impl.CustomFont;
 import com.github.hanyaeger.api.media.SoundClip;
 
-import dev.samdahles.summerland.Story.Affiliation;
 import dev.samdahles.summerland.scenes.dialog.DialogScene;
 import dev.samdahles.summerland.scenes.game.GameScene;
 import dev.samdahles.summerland.scenes.game.SwitchScene;
 import dev.samdahles.summerland.scenes.menus.CreditsScene;
 import dev.samdahles.summerland.scenes.menus.MainMenuScene;
-import dev.samdahles.summerland.entities.characters.TalkingCharacter;
 
-@SuppressWarnings("exports")
 public class Core extends YaegerGame {
 	public static final int SCREEN_WIDTH = 960;
 	public static final int SCREEN_HEIGHT = 900;
-	
+
 	public static final int SCENE_MAINMENU = 0;
 	public static final int SCENE_GAME = 1;
 	public static final int SCENE_CREDITS = 2;
 	public static final int SCENE_DIALOG = 3;
 	public static final int SCENE_SWITCH = 4;
-	
-	public static final Size GENERIC_SIZE = new Size(64, 32);	
-	
+
+	public static final Size GENERIC_SIZE = new Size(64, 32);
+
 	public MainMenuScene mainMenuScene;
 	public CreditsScene creditsScene;
 	public GameScene gameScene;
