@@ -31,10 +31,17 @@ public class CustomTileMap {
 		tmxToTileMap();
 	}
 
+	/**
+	 * Get all tiles
+	 * @return The tiles
+	 */
 	public List<TileEntity> getTiles() {
 		return Tiles;
 	}
-
+	
+	/**
+	 * Turns the TMX file into a workable tilemap to generate tiles
+	 */
 	private void tmxToTileMap() {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setValidating(true);
