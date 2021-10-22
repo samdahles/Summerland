@@ -102,10 +102,10 @@ public class Story implements Serializable {
 				setCurrentPlayerPos(new Coordinate2D(currentPlayerPos.getX(), 5), character);
 				setCurrentArea(currentAreaX + 1, currentAreaY);
 			} else if (direction == Direction.LEFT && getCurrentAreaY() > 1) {
-				setCurrentPlayerPos(new Coordinate2D(930, currentPlayerPos.getY() + 20), character);
+				setCurrentPlayerPos(new Coordinate2D(930, currentPlayerPos.getY() + 5), character);
 				setCurrentArea(currentAreaX, currentAreaY - 1);
 			} else if (direction == Direction.RIGHT && getCurrentAreaY() < 3) {
-				setCurrentPlayerPos(new Coordinate2D(3, currentPlayerPos.getY() - 20), character);
+				setCurrentPlayerPos(new Coordinate2D(3, currentPlayerPos.getY() - 5), character);
 				setCurrentArea(currentAreaX, currentAreaY + 1);
 			}
 
