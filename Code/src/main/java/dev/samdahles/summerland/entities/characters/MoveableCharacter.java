@@ -24,26 +24,28 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider, 
 
 	private String allowedTileset;
 	private MoveAnimationTimer timer = new MoveAnimationTimer(this, 250);
-	
+
 	public static ArrayList<MoveableCharacter> characterList = new ArrayList<MoveableCharacter>();
-	
-	protected int[] downIndexes = {1, 2, 3};
-	protected int[] leftIndexes = {4, 5, 6};
-	protected int[] rightIndexes = {7, 8, 9};
-	protected int[] upIndexes = {10, 11, 12};
-	
-	
+
+	protected int[] downIndexes = { 1, 2, 3 };
+	protected int[] leftIndexes = { 4, 5, 6 };
+	protected int[] rightIndexes = { 7, 8, 9 };
+	protected int[] upIndexes = { 10, 11, 12 };
+
 	/**
-	 * MoveableCharacter is class that all characters on the map either are or extend.
-	 * @param name the name of the character
-	 * @param charFolder the resource folder where Walk.png is located
+	 * MoveableCharacter is class that all characters on the map either are or
+	 * extend.
+	 * 
+	 * @param name           the name of the character
+	 * @param charFolder     the resource folder where Walk.png is located
 	 * @param anchorLocation the initial location of the character
-	 * @param size the size of the character
-	 * @param row the number of sprites divided over the x-axis
-	 * @param column the number of sprites divided over the y-axis
-	 * @param affiliation the {@link Affiliation} that the character has
+	 * @param size           the size of the character
+	 * @param row            the number of sprites divided over the x-axis
+	 * @param column         the number of sprites divided over the y-axis
+	 * @param affiliation    the {@link Affiliation} that the character has
 	 */
-	public MoveableCharacter(String name, String charFolder, Coordinate2D anchorLocation, Size size, Affiliation affiliation) {
+	public MoveableCharacter(String name, String charFolder, Coordinate2D anchorLocation, Size size,
+			Affiliation affiliation) {
 		super(charFolder + "Walk.png", anchorLocation, size, 4, 3);
 		this.name = name;
 		this.charFolder = charFolder;
@@ -56,55 +58,58 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider, 
 		});
 		MoveableCharacter.characterList.add(this);
 	}
-	
+
 	/** Get the name of the character */
 	public String getName() {
 		return this.name;
-		
+
 	}
-	
+
 	/**
 	 * Sets the onInteract {@link Interactable} that will be executed on interact
-	 * @param interactable the {@link Interactable} that will be executed on interact
+	 * 
+	 * @param interactable the {@link Interactable} that will be executed on
+	 *                     interact
 	 */
 	public void setInteract(Interactable interactable) {
 		this.onInteract = interactable;
 	}
-	
+
 	/**
 	 * Run the onInteract {@link Interactable}
 	 */
 	public void interact() {
 		this.onInteract.run();
 	}
-	
+
 	public String toString() {
 		return "MoveableCharacter " + this.name;
 	}
-	
-	
+
 	/** Get the {@link Direction} a MoveableCharacter is facing */
 	@SuppressWarnings("unlikely-arg-type")
 	public Direction getFacing() {
 		int frameIndex = this.getCurrentFrameIndex();
-		
-		if(Arrays.asList(downIndexes).contains(frameIndex)) {
+
+		if (Arrays.asList(downIndexes).contains(frameIndex)) {
 			return Direction.DOWN;
-		} else if(Arrays.asList(leftIndexes).contains(frameIndex)) {
+		} else if (Arrays.asList(leftIndexes).contains(frameIndex)) {
 			return Direction.LEFT;
-		} else if(Arrays.asList(rightIndexes).contains(frameIndex)) {
+		} else if (Arrays.asList(rightIndexes).contains(frameIndex)) {
 			return Direction.RIGHT;
-		} else if(Arrays.asList(upIndexes).contains(frameIndex)) {
+		} else if (Arrays.asList(upIndexes).contains(frameIndex)) {
 			return Direction.UP;
 		}
-		
+
 		return null;
-		
+
 	}
 
 	/**
 	 * Moves the character.
-	 * @param direction the {@link Direction} the character should move (indefinitely).
+	 * 
+	 * @param direction the {@link Direction} the character should move
+	 *                  (indefinitely).
 	 */
 	public void move(Direction direction) {
 		timer.start(direction);
@@ -142,9 +147,10 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider, 
 	public Direction getLastDirection() {
 		return this.lastMove;
 	}
-	
+
 	/**
 	 * Get the {@link Affiliation} of the character.
+	 * 
 	 * @return
 	 */
 	public Affiliation getAffiliation() {
@@ -153,13 +159,12 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider, 
 
 	/**
 	 * Set the {@link Affiliation} of the character.
+	 * 
 	 * @param affiliation
 	 */
 	public void setAffiliation(Affiliation affiliation) {
 		this.affiliation = affiliation;
 	}
-
-
 
 	@Override
 	public void setupTimers() {

@@ -7,7 +7,6 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Direction;
 
 import dev.samdahles.summerland.entities.characters.TalkingCharacter;
-import dev.samdahles.summerland.interactables.Interactable;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
 import dev.samdahles.summerland.level.Level;
 import dev.samdahles.summerland.level.LevelOne;
@@ -43,26 +42,26 @@ public class Story implements Serializable {
 		this.core = core;
 		this.currentAreaY = 1;
 		this.currentAreaX = 1;
-		this.currentPlayerPos = new Coordinate2D(1,1);
+		this.currentPlayerPos = new Coordinate2D(1, 1);
 		this.currentLevel = new LevelOne(this);
 	}
-	
+
 	public void setGameScene() {
 		this.core.setActiveScene(Core.SCENE_GAME);
 	}
-	
+
 	public void setDialogScene() {
 		this.core.setActiveScene(Core.SCENE_DIALOG);
 	}
-	
+
 	public void setDialog(String[] dialog) {
 		this.core.dialogScene.setDialog(dialog);
 	}
-	
+
 	public void setDialogCharacter(TalkingCharacter character) {
 		this.core.dialogScene.setCharacter(character);
 	}
-	
+
 	public void setCurrentArea(int areaX, int areaY) {
 		this.currentAreaY = areaY;
 		this.currentAreaX = areaX;
@@ -88,14 +87,14 @@ public class Story implements Serializable {
 	public Boolean switchMapArea(Direction direction, PlayableCharacter character) {
 		int lastAreaX = getCurrentAreaX();
 		int lastAreaY = getCurrentAreaY();
-		
+
 		long switchTimestamp = new Date().getTime() / 1000;
-		
+
 		if (switchTimestamp - this.previousSwitchTimestamp >= 2) {
 			this.previousSwitchTimestamp = switchTimestamp;
 			this.currentPlayerPos = character.getAnchorLocation();
 			System.out.print(currentPlayerPos.toString());
-			
+
 			if (direction == Direction.UP && getCurrentAreaX() > 1) {
 				setCurrentPlayerPos(new Coordinate2D(currentPlayerPos.getX(), 860), character);
 				setCurrentArea(currentAreaX - 1, currentAreaY);

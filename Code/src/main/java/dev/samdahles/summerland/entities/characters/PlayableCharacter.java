@@ -21,7 +21,6 @@ import javafx.scene.input.KeyCode;
 
 public class PlayableCharacter extends TalkingCharacter implements KeyListener, Collided, SceneBorderTouchingWatcher {
 
-
 	private long previousCollisionTimestamp = new Date().getTime() / 1000;
 	private SoundClip collisionSound = new SoundClip("Music/Collision.mp3");
 	private Collider previousCollider = null;
@@ -31,60 +30,61 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 		super(name, charFolder, initialLocation, Core.GENERIC_SIZE, Affiliation.GOOD);
 		this.story = story;
 	}
-	
+
 	@Override
-	public void notifyBoundaryTouching(SceneBorder border){
-	    setSpeed(0);
-	    switch(border){
-	        case TOP:
-	        	this.story.switchMapArea(Direction.UP, this);
-	            break;
-	        case BOTTOM:
-	        	this.story.switchMapArea(Direction.DOWN, this);
-	            break;
-	        case LEFT:
-	        	this.story.switchMapArea(Direction.LEFT, this);
-	            break;
-	        case RIGHT:
-	        	this.story.switchMapArea(Direction.RIGHT, this);
-	        default:
-	            break;
-	        }
+	public void notifyBoundaryTouching(SceneBorder border) {
+		setSpeed(0);
+		switch (border) {
+		case TOP:
+			this.story.switchMapArea(Direction.UP, this);
+			break;
+		case BOTTOM:
+			this.story.switchMapArea(Direction.DOWN, this);
+			break;
+		case LEFT:
+			this.story.switchMapArea(Direction.LEFT, this);
+			break;
+		case RIGHT:
+			this.story.switchMapArea(Direction.RIGHT, this);
+		default:
+			break;
+		}
 	}
-	
+
 	@Override
-	public void onCollision(Collider collidingObject){
+	public void onCollision(Collider collidingObject) {
 		long collisionTimestamp = new Date().getTime() / 1000;
-		
-		if(collisionTimestamp - this.previousCollisionTimestamp >= 2 
-				|| !collidingObject.equals(previousCollider)) {
+
+		if (collisionTimestamp - this.previousCollisionTimestamp >= 2 || !collidingObject.equals(previousCollider)) {
 			this.collisionSound.play();
 		}
-		
+
 		this.previousCollider = collidingObject;
 		this.previousCollisionTimestamp = collisionTimestamp;
-		
-		if(this.getLastDirection() == Direction.UP) {
-		  this.setAnchorLocationY(this.getAnchorLocation().getY() + 2);
-		} else if(this.getLastDirection() == Direction.LEFT) {
-		this.setAnchorLocationX(this.getAnchorLocation().getX() + 2.2);
-		} else if(this.getLastDirection() == Direction.RIGHT) {
+
+		if (this.getLastDirection() == Direction.UP) {
+			this.setAnchorLocationY(this.getAnchorLocation().getY() + 2);
+		} else if (this.getLastDirection() == Direction.LEFT) {
+			this.setAnchorLocationX(this.getAnchorLocation().getX() + 2.2);
+		} else if (this.getLastDirection() == Direction.RIGHT) {
 			this.setAnchorLocationX(this.getAnchorLocation().getX() - 2.2);
-		} else if(this.getLastDirection() == Direction.DOWN) {	
+		} else if (this.getLastDirection() == Direction.DOWN) {
 			this.setAnchorLocationY(this.getAnchorLocation().getY() - 2.2);
 		}
 	}
-	
+
 	/**
 	 * Get an ArrayList of all nearby {@link MoveableCharacter}
-	 * @param range the range from the {@link PlayableCharacter} to the nearby MoveableCharacters which should be returned
+	 * 
+	 * @param range the range from the {@link PlayableCharacter} to the nearby
+	 *              MoveableCharacters which should be returned
 	 * @return an {@link ArrayList} of all nearby MoveableCharacters
 	 */
 	public ArrayList<MoveableCharacter> getNearbyCharacters(double range) {
 		ArrayList<MoveableCharacter> moveableCharacters = new ArrayList<MoveableCharacter>();
-		for(MoveableCharacter character : MoveableCharacter.characterList) {
-			if(!character.equals(this)) {
-				if(character.getAnchorLocation().distance(this.getAnchorLocation()) < range) {
+		for (MoveableCharacter character : MoveableCharacter.characterList) {
+			if (!character.equals(this)) {
+				if (character.getAnchorLocation().distance(this.getAnchorLocation()) < range) {
 					moveableCharacters.add(character);
 				}
 			}
@@ -103,10 +103,10 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 		} else if (pressedKeys.contains(KeyCode.S) || pressedKeys.contains(KeyCode.DOWN)) {
 			this.move(Direction.DOWN);
 		} else if (pressedKeys.contains(KeyCode.E)) {
-			
+
 			ArrayList<MoveableCharacter> nearbyCharacters = this.getNearbyCharacters(40);
-			if(!nearbyCharacters.isEmpty()) {
-				for(MoveableCharacter character : nearbyCharacters) {
+			if (!nearbyCharacters.isEmpty()) {
+				for (MoveableCharacter character : nearbyCharacters) {
 					character.interact();
 					break;
 				}
@@ -114,6 +114,6 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 		} else if (pressedKeys.isEmpty()) {
 			this.stopMove();
 		}
-	
+
 	}
 }
