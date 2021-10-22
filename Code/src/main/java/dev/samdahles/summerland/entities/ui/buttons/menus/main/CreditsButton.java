@@ -21,6 +21,6 @@ public class CreditsButton extends Button {
 
 	@Override
 	public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2d) {
-		this.core.setActiveScene(Core.SCENE_DIALOG);
+		this.core.setActiveScene(Core.SCENE_CREDITS);
 	}
 }
