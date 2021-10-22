@@ -3,10 +3,8 @@ package dev.samdahles.summerland.entities.characters;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;

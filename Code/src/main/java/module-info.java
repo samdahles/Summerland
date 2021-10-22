@@ -1,9 +1,9 @@
 module Summerland {
-    requires hanyaeger;
-	requires jsr305;
-	requires java.xml;
+    requires transitive hanyaeger;
+	requires transitive jsr305;
+	requires transitive java.xml;
 	requires transitive javafx.graphics;
-	requires javafx.base;
+	requires transitive javafx.base;
     exports dev.samdahles.summerland;
     
     opens Fonts;

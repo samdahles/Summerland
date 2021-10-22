@@ -1,7 +1,5 @@
 package dev.samdahles.summerland.scenes.menus;
 
-import java.util.Random;
-
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
@@ -42,7 +40,7 @@ public abstract class MenuScene extends DynamicScene {
     @Override
     public void setupEntities() {
     	int titleY = 40;
-    	int titleYMain = 140;
+    	//int titleYMain = 140;
     	int titleSize = 40;
     	
         Text titleText = new Text(this.titleLocation, titleSize, this.title, this.fromAnchorPoint, "PressStart2P");
