@@ -51,6 +51,7 @@ public class GameScene extends DynamicScene implements KeyListener {
     	for(MoveableCharacter character : this.story.currentLevel.entityList) {
     		this.addEntity(character);
     	}
+    	
     	this.addEntity(this.story.currentLevel.playableCharacter);	
     }
 
