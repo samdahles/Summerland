@@ -3,6 +3,7 @@ package dev.samdahles.summerland.level;
 import java.util.ArrayList;
 
 import dev.samdahles.summerland.Core;
+import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.entities.characters.MoveableCharacter;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
 
@@ -17,11 +18,10 @@ import dev.samdahles.summerland.entities.characters.PlayableCharacter;
 public abstract class Level {
 	public ArrayList<MoveableCharacter> entityList = new ArrayList<MoveableCharacter>();
 	public PlayableCharacter playableCharacter;
-	private Core core;
+	public Story story;
 
-	protected Level(Core core) {
-		this.setupLevel();
-		this.core = core;
+	protected Level(Story story) {
+		this.setupLevel(story);
 	}
 	
 	public void addCharacter(MoveableCharacter character) {
@@ -47,6 +47,7 @@ public abstract class Level {
 	
 	/**
 	 * This method should be used to create all entities.
+	 * @param story 
 	 */
-	public abstract void setupLevel();
+	public abstract void setupLevel(Story story);
 }

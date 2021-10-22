@@ -10,6 +10,7 @@ import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
 import dev.samdahles.summerland.tilemaps.CustomTileMap;
+import javafx.application.Platform;
 import javafx.scene.paint.Color;
 
 public class SwitchScene extends DynamicScene {
@@ -25,14 +26,16 @@ public class SwitchScene extends DynamicScene {
 	
 	public void setupScene() {
 		this.setBackgroundColor(Color.BLACK);
-
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				core.setActiveScene(Core.SCENE_GAME);
-			}
-		}, 1000);
+		
+		 Runnable task = () -> {
+	            Platform.runLater(() -> {
+	                // do something here
+	            	core.setActiveScene(Core.SCENE_GAME);
+	            });
+	        };
+	        Thread thread = new Thread(task);
+	        thread.setDaemon(true);
+	        thread.start();
 	}
 
 }

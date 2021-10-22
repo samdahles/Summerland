@@ -29,13 +29,14 @@ public class Story implements Serializable {
 	/**
 	 * Story is the object that effectively resembles a savegame.
 	 * It is responsible for keeping track of the {@code currentLevel} and the entities in it.
+	 * @param core 
 	 * @param core the core object
 	 */
 	public Story(Core core) {
 		this.core = core;
 		this.currentAreaY = 1;
 		this.currentAreaX = 1;
-		this.currentLevel = new LevelOne(core);
+		this.currentLevel = new LevelOne(this);
 	}
 	
 	public void setCurrentArea(int areaX, int areaY) {
@@ -60,7 +61,8 @@ public class Story implements Serializable {
 	}
 	
 	public Boolean switchMapArea(Direction direction) {
-		core.setActiveScene(4);
+		this.core.gameScene.setupEntities();
+		this.core.setActiveScene(4);
 		return false;
 	}
 	/** Serializes story and saves (and possibly overwrites) {@link src/main/resources/Savegame.ser} */

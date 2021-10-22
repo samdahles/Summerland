@@ -17,6 +17,7 @@ import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.userinput.KeyListener;
 
 import dev.samdahles.summerland.Core;
+import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.Story.Affiliation;
 import javafx.scene.input.KeyCode;
 
@@ -26,9 +27,11 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 	private long previousCollisionTimestamp = new Date().getTime() / 1000;
 	private SoundClip collisionSound = new SoundClip("Music/Collision.mp3");
 	private Collider previousCollider = null;
+	private Story story;
 
-	public PlayableCharacter(Coordinate2D initialLocation, String name, String charFolder) {
+	public PlayableCharacter(Coordinate2D initialLocation, String name, String charFolder, Story story) {
 		super(name, charFolder, initialLocation, Core.GENERIC_SIZE, Affiliation.GOOD);
+		this.story = story;
 	}
 	
 	@Override
@@ -36,6 +39,8 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 	    setSpeed(0);
 	    switch(border){
 	        case TOP:
+	        	this.story.setCurrentArea(2, 2);
+	        	this.story.switchMapArea(Direction.UP);
 	            setAnchorLocationY(1);
 	            break;
 	        case BOTTOM:
