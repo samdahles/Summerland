@@ -12,7 +12,7 @@ import dev.samdahles.summerland.scenes.menus.CreditsScene;
 import dev.samdahles.summerland.scenes.menus.MainMenuScene;
 
 public class Core extends YaegerGame {
-	public static final int SCREEN_WIDTH = 960;
+	public final static int SCREEN_WIDTH = 960;
 	public static final int SCREEN_HEIGHT = 900;
 
 	public static final int SCENE_MAINMENU = 0;

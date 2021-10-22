@@ -37,18 +37,16 @@ public class PlayableCharacter extends TalkingCharacter implements KeyListener, 
 	    setSpeed(0);
 	    switch(border){
 	        case TOP:
-	        	this.story.setCurrentArea(2, 2);
-	        	this.story.switchMapArea(Direction.UP);
-	            setAnchorLocationY(1);
+	        	this.story.switchMapArea(Direction.UP, this);
 	            break;
 	        case BOTTOM:
-	            setAnchorLocationY(getSceneHeight() - getHeight() - 1);
+	        	this.story.switchMapArea(Direction.DOWN, this);
 	            break;
 	        case LEFT:
-	            setAnchorLocationX(1);
+	        	this.story.switchMapArea(Direction.LEFT, this);
 	            break;
 	        case RIGHT:
-	            setAnchorLocationX(getSceneWidth() - getWidth() - 1);
+	        	this.story.switchMapArea(Direction.RIGHT, this);
 	        default:
 	            break;
 	        }
