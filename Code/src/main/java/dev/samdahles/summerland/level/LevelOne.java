@@ -1,7 +1,5 @@
 package dev.samdahles.summerland.level;
 
-import com.github.hanyaeger.api.entities.Direction;
-
 import dev.samdahles.summerland.Core;
 import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.entities.characters.CommonCharacters;

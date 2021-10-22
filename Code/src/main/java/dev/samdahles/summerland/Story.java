@@ -5,12 +5,14 @@ import java.io.Serializable;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Direction;
 
-import dev.samdahles.summerland.entities.characters.MoveableCharacter;
-import dev.samdahles.summerland.entities.characters.PlayableCharacter;
 import dev.samdahles.summerland.level.Level;
 import dev.samdahles.summerland.level.LevelOne;
 
 public class Story implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8189187705636449254L;
 	private Core core;	
 	public Level currentLevel;
 	private int currentAreaX;

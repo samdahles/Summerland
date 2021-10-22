@@ -1,15 +1,10 @@
 package dev.samdahles.summerland.entities.ui.buttons.menus.main;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.Direction;
 
 import dev.samdahles.summerland.Core;
-import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.entities.ui.buttons.Button;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.input.MouseButton;
-import javafx.util.Duration;
 
 public class ContinueButton extends Button {
 	private Core core;

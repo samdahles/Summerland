@@ -2,18 +2,17 @@ package dev.samdahles.summerland.entities.characters;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 import dev.samdahles.summerland.Story.Affiliation;
 
-public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
+public class MoveableCharacter extends DynamicSpriteEntity implements Collider, TimerContainer {
 
 	private Direction lastMove;
 	protected String name;
@@ -21,8 +20,14 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 	private Affiliation affiliation;
 	private Runnable onInteract;
 	private String allowedTileset;
+	private MoveAnimationTimer timer = new MoveAnimationTimer(this, 250);
 	
 	public static ArrayList<MoveableCharacter> characterList = new ArrayList<MoveableCharacter>();
+	
+	protected int[] downIndexes = {1, 2, 3};
+	protected int[] leftIndexes = {4, 5, 6};
+	protected int[] rightIndexes = {7, 8, 9};
+	protected int[] upIndexes = {10, 11, 12};
 	
 	
 	/**
@@ -78,10 +83,6 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 	@SuppressWarnings("unlikely-arg-type")
 	public Direction getFacing() {
 		int frameIndex = this.getCurrentFrameIndex();
-		int[] downIndexes = {1, 2, 3};
-		int[] leftIndexes = {4, 5, 6};
-		int[] rightIndexes = {7, 8, 9};
-		int[] upIndexes = {10, 11, 12};
 		
 		if(Arrays.asList(downIndexes).contains(frameIndex)) {
 			return Direction.DOWN;
@@ -102,20 +103,24 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 	 * @param direction the {@link Direction} the character should move (indefinitely).
 	 */
 	public void move(Direction direction) {
+		timer.start(direction);
+		int index = 0;
 		if (direction == Direction.UP) {
 			setMotion(1.5, 180d);
-			this.setCurrentFrameIndex(10);
+			index = 9;
 		} else if (direction == Direction.LEFT) {
 			setMotion(1.5, 270d);
-			this.setCurrentFrameIndex(4);
+			index = 3;
 		} else if (direction == Direction.RIGHT) {
 			setMotion(1.5, 90d);
-			this.setCurrentFrameIndex(7);
+			index = 6;
 		} else if (direction == Direction.DOWN) {
 			setMotion(1.5, 0d);
-			this.setCurrentFrameIndex(2);
+			index = 0;
 		}
-
+		if (lastMove != direction) {
+			this.setCurrentFrameIndex(index);
+		}
 		lastMove = direction;
 	}
 
@@ -123,6 +128,7 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 	 * Stops movement of the character.
 	 */
 	public void stopMove() {
+		timer.stop();
 		this.setSpeed(0);
 	}
 
@@ -147,6 +153,14 @@ public class MoveableCharacter extends DynamicSpriteEntity implements Collider {
 	 */
 	public void setAffiliation(Affiliation affiliation) {
 		this.affiliation = affiliation;
+	}
+
+
+
+	@Override
+	public void setupTimers() {
+		// TODO Auto-generated method stub
+		addTimer(timer);
 	}
 
 }

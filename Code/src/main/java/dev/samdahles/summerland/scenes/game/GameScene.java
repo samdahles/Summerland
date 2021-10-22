@@ -1,7 +1,7 @@
 package dev.samdahles.summerland.scenes.game;
+
 import java.util.Set;
 
-import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.KeyListener;
