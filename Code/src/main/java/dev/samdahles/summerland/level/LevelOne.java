@@ -7,11 +7,13 @@ import dev.samdahles.summerland.entities.characters.MoveableCharacter;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
 import dev.samdahles.summerland.entities.characters.TalkingCharacter;
 import dev.samdahles.summerland.interactables.Interactable;
+import javafx.util.Pair;
 
 public class LevelOne extends Level {
 	/**
 	 * Level One is the first level of the game. Nate appears here alongside Rhett.
-	 * @param core 
+	 * 
+	 * @param core
 	 */
 	public LevelOne(Story story) {
 		super(story);
@@ -19,30 +21,27 @@ public class LevelOne extends Level {
 
 	@Override
 	public void setupLevel(Story story) {
+		if (story.getCurrentAreaX() == 1 && story.getCurrentAreaY() == 1) {
+			TalkingCharacter rhett = CommonCharacters.getRhett();
+			rhett.setAnchorLocationY(350);
+			rhett.setAnchorLocationX(200);
+
+			Interactable rhettDialog1 = new Interactable(story, rhett) {
+				public void run() {
+					story.setDialogCharacter(rhett);
+					story.setDialog(new String[] { "Hi Nate!", "How have you been?" });
+					story.setDialogScene();
+				}
+			};
+
+			rhett.setInteract(rhettDialog1);
+
+			
+			this.addCharacter(rhett);
+		}
 		
 		PlayableCharacter nate = CommonCharacters.getNate(story);
-		TalkingCharacter rhett = CommonCharacters.getRhett();
-		
-		nate.setAnchorLocationY(15);
-		rhett.setAnchorLocationY(100);
-		
-		Interactable rhettDialog1 = new Interactable(story, rhett) {
-			public void run() {
-				story.setDialogCharacter(rhett);
-				story.setDialog(new String[] {
-						"Hi Nate!",
-						"How have you been?"
-				});
-				story.setDialogScene();
-			}
-		};
-		
-		
-		rhett.setInteract(rhettDialog1);
-		
-		
 		this.addCharacter(nate);
-		this.addCharacter(rhett);
-		
+		nate.setAnchorLocationY(15);
 	}
 }

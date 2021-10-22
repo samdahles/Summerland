@@ -89,7 +89,6 @@ public class Story implements Serializable {
 		int lastAreaY = getCurrentAreaY();
 
 		long switchTimestamp = new Date().getTime() / 1000;
-
 		if (switchTimestamp - this.previousSwitchTimestamp >= 2) {
 			this.previousSwitchTimestamp = switchTimestamp;
 			this.currentPlayerPos = character.getAnchorLocation();

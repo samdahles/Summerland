@@ -1,10 +1,12 @@
 package dev.samdahles.summerland.level;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import dev.samdahles.summerland.Story;
 import dev.samdahles.summerland.entities.characters.MoveableCharacter;
 import dev.samdahles.summerland.entities.characters.PlayableCharacter;
+import javafx.util.Pair;
 
 
 /**
@@ -18,14 +20,15 @@ public abstract class Level {
 	public ArrayList<MoveableCharacter> entityList = new ArrayList<MoveableCharacter>();
 	public PlayableCharacter playableCharacter;
 	public Story story;
-
+	
 	protected Level(Story story) {
 		this.setupLevel(story);
-	}
+	}	
 	
 	public void addCharacter(MoveableCharacter character) {
 		this.entityList.add(character);
 	}
+	
 	
 	public void removeCharacter(MoveableCharacter character) {
 		character.remove();
