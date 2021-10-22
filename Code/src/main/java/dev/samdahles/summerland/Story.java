@@ -5,6 +5,8 @@ import java.io.Serializable;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Direction;
 
+import dev.samdahles.summerland.entities.characters.TalkingCharacter;
+import dev.samdahles.summerland.interactables.Interactable;
 import dev.samdahles.summerland.level.Level;
 import dev.samdahles.summerland.level.LevelOne;
 
@@ -41,22 +43,22 @@ public class Story implements Serializable {
 		this.currentLevel = new LevelOne(this);
 	}
 	
+	public void setGameScene() {
+		this.core.setActiveScene(Core.SCENE_GAME);
+	}
 	
-	public void inheritSetDialogScene() {
+	public void setDialogScene() {
 		this.core.setActiveScene(Core.SCENE_DIALOG);
 	}
 	
-	public void inheritSetDialog(String[] dialog) {
+	public void setDialog(String[] dialog) {
 		this.core.dialogScene.setDialog(dialog);
 	}
 	
-	public void inheritSetDialogCharacter(String characterName) {
-		this.core.dialogScene.setCharacter(characterName);
+	public void setDialogCharacter(TalkingCharacter character) {
+		this.core.dialogScene.setCharacter(character);
 	}
 	
-	public void inheritSetGameScene() {
-		this.core.setActiveScene(Core.SCENE_GAME);
-	}
 	
 	public void setCurrentArea(int areaX, int areaY) {
 		this.currentAreaY = areaY;	
