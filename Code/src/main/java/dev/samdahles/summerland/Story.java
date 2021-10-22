@@ -41,6 +41,20 @@ public class Story implements Serializable {
 		this.currentLevel = new LevelOne(this);
 	}
 	
+	
+	public void inheritSetDialogScene() {
+		this.core.setActiveScene(Core.SCENE_DIALOG);
+	}
+	
+	public void inheritSetDialog(String[] dialog) {
+		this.core.dialogScene.setDialog(dialog);
+	}
+	
+	public void inheritSetDialogCharacter(String characterName) {
+		this.core.dialogScene.setCharacter(characterName);
+	}
+	
+	
 	public void setCurrentArea(int areaX, int areaY) {
 		this.currentAreaY = areaY;	
 		this.currentAreaX = areaX;

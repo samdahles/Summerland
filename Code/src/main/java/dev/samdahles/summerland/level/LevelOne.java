@@ -25,27 +25,28 @@ public class LevelOne extends Level {
 		rhett.setAnchorLocationY(100);
 				
 		rhett.setInteract(new Runnable() {
-		    Core core;
+		    Story story;
 		    MoveableCharacter character;
 		    
 		    @Override                            
 		    public void run() {
-		    	this.core.dialogScene.setCharacter(character.getName());
+		    	this.story.inheritSetDialogCharacter(this.character.getName());
 		    	String[] dialog = {
 		    			"Hi Nate! How have you been?"
 		    	};
 		    	
-		    	this.core.dialogScene.setDialog(dialog);
-		    	this.core.setActiveScene(Core.SCENE_DIALOG);
+		    	this.story.inheritSetDialog(dialog);
+		    	this.story.inheritSetDialogScene();
+		    	
 		    }
 		    
-		    public Runnable init(Core core, MoveableCharacter character) {
+		    public Runnable init(Story story, MoveableCharacter character) {
 		    	this.character = character;
-		    	this.core = core;
+		    	this.story = story;
 		    	return (this);
 		    }
 
-		}.init(core, rhett));
+		}.init(this.story, rhett));
 		
 		
 		this.addCharacter(nate);
